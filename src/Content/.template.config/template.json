@@ -12,10 +12,5 @@
       "type":"project"
     },
     "sourceName": "MyCommand",
-    "preferNameDirectory":true,
-    "primaryOutputs": [
-        {
-            "path": "MyCommand/MyCommand.csproj"
-        }
-    ]
+    "preferNameDirectory":true
   }
