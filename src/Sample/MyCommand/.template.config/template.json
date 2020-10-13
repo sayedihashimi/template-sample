@@ -3,6 +3,7 @@
     "author": "Sayed I. Hashimi",
     "classifications": [ "Console" ], 
     "name": "netcoretool",
+    "defaultName": "MyCommandTool",
     "identity": "Sayedha.CoreTool.CSharp",
     "groupIdentity":"Sayedha.CoreTool",
     "shortName": "tool",
@@ -11,5 +12,10 @@
       "type":"project"
     },
     "sourceName": "MyCommand",
-    "preferNameDirectory":true
+    "preferNameDirectory":true,
+    "primaryOutputs": [
+        {
+            "path": "MyCommand/MyCommand.csproj"
+        }
+    ]
   }

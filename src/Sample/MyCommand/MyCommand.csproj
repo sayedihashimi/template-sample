@@ -24,5 +24,10 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0-rc.2.20475.5" />
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.20371.2" />
   </ItemGroup>
-
+  
+  <Target Name="InstallTool" DependsOnTargets="Pack">
+    <Exec Command="dotnet tool uninstall --global $(MSBuildProjectName)" IgnoreExitCode="true" />
+    <Exec Command="dotnet tool install --global --add-source $(PackageOutputPath) $(MSBuildProjectName)" />
+    <Exec Command="$(ToolCommandName) --help" />
+  </Target>
 </Project>
