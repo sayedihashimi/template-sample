@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Sayed I. Hashimi",
+    "classifications": [ "Console" ], 
+    "name": "netcoretool",
+    "identity": "Sayedha.CoreTool.CSharp",
+    "groupIdentity":"Sayedha.CoreTool",
+    "shortName": "tool",
+    "tags": {
+      "language": "C#",
+      "type":"project"
+    },
+    "sourceName": "MyCommand",
+    "preferNameDirectory":true
+  }
