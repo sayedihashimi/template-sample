@@ -12,5 +12,20 @@
       "type":"project"
     },
     "sourceName": "MyCommand",
-    "preferNameDirectory":true
+    "preferNameDirectory":true,
+    "symbols":{
+      "authorName": {
+        "type": "parameter",
+        "defaultValue": "<insert author name>",
+        "replaces":"AuthorName",
+        "datatype":"text",
+        "description": "Author name"
+      },
+      "description": {
+        "type": "parameter",
+        "description": "Description text that will be shown for this nuget package on nuget.org",
+        "defaultValue": "<insert description>",
+        "replaces":"DescriptionContent"
+      }
+    }
   }
