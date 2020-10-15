@@ -12,5 +12,33 @@
       "type":"project"
     },
     "sourceName": "MyWebApp",
-    "preferNameDirectory":true
+    "preferNameDirectory":true,
+    "symbols":{
+      "Framework": {
+        "type": "parameter",
+        "description": "The target framework for the project.",
+        "datatype": "choice",
+        "choices": [
+          {
+            "choice": "netcoreapp3.1",
+            "description": "Target netcoreapp3.1"
+          }
+        ],
+        "replaces": "netcoreapp3.1",
+        "defaultValue": "netcoreapp3.1"
+      },
+      "authorName": {
+        "type": "parameter",
+        "defaultValue": "(insert author name)",
+        "replaces":"AuthorName",
+        "datatype":"text",
+        "description": "Author name"
+      },
+      "siteTitle": {
+        "type": "parameter",
+        "description": "Title that will be shown in the browser tab",
+        "defaultValue": "(insert title)",
+        "replaces":"SiteTitle"
+      }
+    }
   }

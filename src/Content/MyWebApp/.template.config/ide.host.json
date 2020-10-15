@@ -1,4 +1,20 @@
 {
     "$schema": "http://json.schemastore.org/vs-2017.3.host",
-    "icon": "icon.png"
+    "icon": "icon.png",
+    "symbolInfo": [
+        {
+          "id": "authorName",
+          "name": {
+            "text": "Author Name"
+          },
+          "isVisible": "true"
+        },
+        {
+            "id":"siteTitle",
+            "name":{
+              "text": "Site title"
+            },
+            "isVisible": "true"
+          }
+      ]
 }
