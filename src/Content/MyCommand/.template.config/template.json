@@ -14,9 +14,22 @@
     "sourceName": "MyCommand",
     "preferNameDirectory":true,
     "symbols":{
+      "Framework": {
+        "type": "parameter",
+        "description": "The target framework for the project.",
+        "datatype": "choice",
+        "choices": [
+          {
+            "choice": "netcoreapp3.1",
+            "description": "Target netcoreapp3.1"
+          }
+        ],
+        "replaces": "netcoreapp3.1",
+        "defaultValue": "netcoreapp3.1"
+      },
       "authorName": {
         "type": "parameter",
-        "defaultValue": "<insert author name>",
+        "defaultValue": "(insert author name)",
         "replaces":"AuthorName",
         "datatype":"text",
         "description": "Author name"
@@ -24,7 +37,7 @@
       "description": {
         "type": "parameter",
         "description": "Description text that will be shown for this nuget package on nuget.org",
-        "defaultValue": "<insert description>",
+        "defaultValue": "(insert description)",
         "replaces":"DescriptionContent"
       }
     }

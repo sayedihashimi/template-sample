@@ -8,6 +8,13 @@
             "text": "Author Name"
           },
           "isVisible": "true"
+        },
+        {
+          "id":"description",
+          "name":{
+            "text": "Description"
+          },
+          "isVisible": "true"
         }
       ]
 }
