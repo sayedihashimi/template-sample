@@ -27,14 +27,14 @@
       "replaces": "netcoreapp3.1",
       "defaultValue": "netcoreapp3.1"
     },
-    "authorName": {
+    "AuthorName": {
       "type": "parameter",
       "defaultValue": "(insert author name)",
       "replaces": "AuthorName",
       "datatype": "text",
       "description": "Author name"
     },
-    "description": {
+    "Description": {
       "type": "parameter",
       "description": "Description text that will be shown for this nuget package on nuget.org",
       "defaultValue": "(insert description)",

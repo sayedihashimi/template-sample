@@ -3,14 +3,14 @@
   "icon": "icon.png",
   "symbolInfo": [
     {
-      "id": "authorName",
+      "id": "AuthorName",
       "name": {
         "text": "Author Name"
       },
       "isVisible": "true"
     },
     {
-      "id": "siteTitle",
+      "id": "SiteTitle",
       "name": {
         "text": "Site title"
       },
