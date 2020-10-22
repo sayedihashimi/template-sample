@@ -1,11 +1,40 @@
 # Template sample
 
 This repo contains a couple samples showing how you can create a .net core template that can be used either by the
-dotnet command line (`dotnet new`) or Visual Studio & Visual Studio for Mac.
+dotnet command line (`dotnet new`) or Visual Studio & Visual Studio for Mac. For more info see [.NET CLI Templates in Visual Studio
+](https://devblogs.microsoft.com/dotnet/net-cli-templates-in-visual-studio/).
 
 The samples are in the `src/content` folder.
 
 Add an issue here, or reach out to [@SayedIHashimi](https://twitter.com/sayedihashimi) on twitter with any questions.
+
+## Getting started creating templates
+
+To get started creating templates, take a look at the following resources.
+ - [How to create your own templates for dotnet new
+](https://devblogs.microsoft.com/dotnet/how-to-create-your-own-templates-for-dotnet-new/)
+ - [Custom templates for dotnet new
+](https://docs.microsoft.com/en-us/dotnet/core/tools/custom-templates)
+
+## How to enable cli templates in Visual Studio and Visual Studio for Mac
+
+The feature to show templates that are installed using the command-line interface (cli) is a preview feature. This feature is disabled by default.
+
+To enable this feature in ***Visual Studio***:
+
+First open the Options dialog, go to `Tools > Options`. In the dialog go to `Environment > Preview Features` and then on the right-hand side and select the
+preview feature named *Show all .NET Core templates in the New project dialog*. For more info see [.NET CLI Templates in Visual Studio
+](https://devblogs.microsoft.com/dotnet/net-cli-templates-in-visual-studio/).
+
+![Visual Studio - Tool > Options > Environment > Preview features](media/vs-preview-features.png)
+
+To enable this feature inn ***Visual Studio for Mac***:
+
+![Visual Studio - Tool > Options > Environment > Preview features](media/vsmac-preview-features.png)
+
+First open the Preferences dialog, go to `Visual Studio (menu) > Preferences...`. In the list on the
+left hand side, select `Other > Preview Features` and select the
+preview feature named *Show all .NET Core templates in the New project dialog*.
 
 ## Visual Studio support
 
@@ -210,7 +239,6 @@ In the image below the icon for the sample console template is shown.
 
 ![New Project Dialog - Custom template with icon](media/vs-npd-custom-template.png)
 
-
 ### How to make a parameter visible in Visual Studio
 
 In `template.json` you can declare any number of parameters. Those parameters will not by default show up in
@@ -255,3 +283,59 @@ After adding this declaration, when the template is used in Visual Studio the pa
 will be presented to the user as
 
 ![New Project Dialog - Additional Info Page](media/vs-addl-info-page.png)
+
+## How to test template changes locally
+
+In order for a template to appear in Visual Studio it needs to be installed using a NuGet package
+(.nupkg file). When developing templates locally, when you are ready to test your template using
+Visual Studio, follow the steps below.
+
+It's recommended that you delete the cache folders that are used for the templates. The chache folders are in the user home directory under the `.templateengine` folder.
+
+ 1. Close all instances of Visual Studio
+ 1. Create a NuGet package that has the template
+ 1. Delete Template Engine cache folders
+ 1. Install the template using `dotnet new --install <path-to-nuget-package>`
+ 1. Start Visual Studio
+
+## Common issues
+
+If your template is not appearing in Visual Studio, check the following.
+
+### Required properties
+
+Ensure that the following required properties are set in the `template.json` file.
+
+- `author`
+- `sourceName`
+- `classifications`
+- `identity`
+- `name`
+- `shortName`
+- `tags`
+
+For tags ensure you have specified the `language` and `type` values. See the example below.
+
+```json
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+```
+
+The `type` value can be either `project` or `item`, other values should not be used.
+
+### `primaryOutputs`
+
+If you have a single project template, you typically don't have to specify the `primaryOutputs` property.
+If your `templates.json` file has specified `primaryOutputs`, Visual Studio will open load the project(s)
+specified. If the value for `primaryOutputs` is not correct, the project(s) will not load in Visual Studio.
+
+If the value for the `primaryOutputs` is not correct, the project(s) will not be loaded in Visual Studio
+
+### Verify that the NuGet package has the correct files
+
+After creating the .nupkg file you can examine it by extracting the contents using your favorite zip tool.
+The .nupkg file is just a .zip file with a different file extension.
+Double check that the `.template.config` folder is in the package as well as the `template.json` file
+and any host files.
