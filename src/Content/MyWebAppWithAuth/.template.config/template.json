@@ -2,11 +2,11 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "Sayed I. Hashimi",
   "classifications": ["Web"],
-  "name": "sayedweb",
-  "shortName": "sayedweb",
+  "name": "sayedwebauth",
+  "shortName": "sayedwebauth",
   "defaultName": "MyWeb",
-  "identity": "Sayedha.Web.CSharp",
-  "groupIdentity": "Sayedha.Web",
+  "identity": "Sayedha.Web.Auth.CSharp",
+  "groupIdentity": "Sayedha.Web.Auth",
   "tags": {
     "language": "C#",
     "type": "project"
