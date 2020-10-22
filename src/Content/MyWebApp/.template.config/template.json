@@ -6,7 +6,6 @@
   "shortName": "sayedweb",
   "defaultName": "MyWeb",
   "identity": "Sayedha.Web.CSharp",
-  "groupIdentity": "Sayedha.Web",
   "tags": {
     "language": "C#",
     "type": "project"
@@ -79,39 +78,6 @@
         "fallbackVariableName": "HttpsPortGenerated"
       },
       "replaces": "44345"
-    },
-
-    "auth": {
-      "type": "parameter",
-      "datatype": "choice",
-      "choices": [
-        {
-          "choice": "None",
-          "description": "No authentication"
-        },
-        {
-          "choice": "Individual",
-          "description": "Individual authentication"
-        },
-        {
-          "choice": "IndividualB2C",
-          "description": "Individual authentication with Azure AD B2C"
-        },
-        {
-          "choice": "SingleOrg",
-          "description": "Organizational authentication for a single tenant"
-        },
-        {
-          "choice": "MultiOrg",
-          "description": "Organizational authentication for multiple tenants"
-        },
-        {
-          "choice": "Windows",
-          "description": "Windows authentication"
-        }
-      ],
-      "defaultValue": "None",
-      "description": "The type of authentication to use"
     }
   }
 }

@@ -8,6 +8,8 @@ The samples are in the `src/content` folder.
 
 Add an issue here, or reach out to [@SayedIHashimi](https://twitter.com/sayedihashimi) on twitter with any questions.
 
+To discover templates that have already been created go to https://dotnetnew.azurewebsites.net/.
+
 ## Getting started creating templates
 
 To get started creating templates, take a look at the following resources.

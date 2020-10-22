@@ -29,6 +29,7 @@ function Clean(){
 # start script
 Clean
 
+# create nuget package
 $outputpath = Join-Path $scriptDir nupkg
 $pathtonuspec = Join-Path $srcDir SayedHa.Template.NetCoreTool.nuspec
 if(Test-Path $pathtonuspec){
@@ -40,7 +41,7 @@ else{
 }
 
 $pathtonupkg = join-path $scriptDir nupkg/SayedHa.Template.NetCoreTool.nuspec.1.0.0.nupkg
-
+# install nuget package using dotnet new --install
 if(test-path $pathtonupkg){   
     Reset-Templates
     'installing template with command "dotnet new --install {0}"' -f $pathtonupkg | write-host

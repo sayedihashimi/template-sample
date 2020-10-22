@@ -6,7 +6,6 @@
   "shortName": "sayedwebauth",
   "defaultName": "MyWeb",
   "identity": "Sayedha.Web.Auth.CSharp",
-  "groupIdentity": "Sayedha.Web.Auth",
   "tags": {
     "language": "C#",
     "type": "project"
