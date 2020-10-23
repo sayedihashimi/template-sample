@@ -93,24 +93,24 @@
           "description": "Individual authentication"
         },
         {
-          "choice": "IndividualB2C",
-          "description": "Individual authentication with Azure AD B2C"
-        },
-        {
-          "choice": "SingleOrg",
-          "description": "Organizational authentication for a single tenant"
-        },
-        {
-          "choice": "MultiOrg",
-          "description": "Organizational authentication for multiple tenants"
-        },
-        {
           "choice": "Windows",
           "description": "Windows authentication"
         }
       ],
       "defaultValue": "None",
       "description": "The type of authentication to use"
+    },
+    "NoAuth": {
+      "type": "computed",
+      "value": "(!(IndividualAuth || OrganizationalAuth || WindowsAuth))"
+    },
+    "IndividualLocalAuth": {
+      "type": "computed",
+      "value": "(auth == \"Individual\")"
+    },
+    "WindowsAuth": {
+      "type": "computed",
+      "value": "(auth == \"Windows\")"
     }
   }
 }

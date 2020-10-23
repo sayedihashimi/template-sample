@@ -9,6 +9,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+#if (NoAuth)
+// auth selected: no auth
+#elif (IndividualLocalAuth)
+// auth selected: individual
+#elif (WindowsAuth)
+// auth selected: windows
+#endif
+
 namespace MyWebApp {
     public class Startup {
         public Startup(IConfiguration configuration) {
