@@ -292,11 +292,11 @@ In order for a template to appear in Visual Studio it needs to be installed usin
 (.nupkg file). When developing templates locally, when you are ready to test your template using
 Visual Studio, follow the steps below.
 
-It's recommended that you delete the cache folders that are used for the templates. The chache folders are in the user home directory under the `.templateengine` folder.
+It's recommended that you delete the cache folders that are used for the templates. The chache folders are in the user home directory (`~`) under the `.templateengine` folder. The default path on windows is `C:\Users\{username}\.templateengine` and for macOS `/Users/{username}/.templateengine`.
 
  1. Close all instances of Visual Studio
  1. Create a NuGet package that has the template
- 1. Delete Template Engine cache folders
+ 1. Delete Template Engine cache folders (folders under `~/.templateengine`)
  1. Install the template using `dotnet new --install <path-to-nuget-package>`
  1. Start Visual Studio
 
