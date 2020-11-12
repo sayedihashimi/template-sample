@@ -33,7 +33,7 @@ Clean
 $outputpath = Join-Path $scriptDir nupkg
 $pathtonuspec = Join-Path $srcDir SayedHa.Template.NetCoreTool.nuspec
 if(Test-Path $pathtonuspec){
-    nuget pack $pathtonuspec -OutputDirectory $outputpath
+    nuget.exe pack $pathtonuspec -OutputDirectory $outputpath
 }
 else{
     'ERROR: nuspec file not found at {0}' -f $pathtonuspec | Write-Error
@@ -46,4 +46,7 @@ if(test-path $pathtonupkg){
     Reset-Templates
     'installing template with command "dotnet new --install {0}"' -f $pathtonupkg | write-host
     &dotnet new --install $pathtonupkg
+}
+else{
+    'Not installing template because it was not found at "{0}"' -f $pathtonupkg | Write-Error
 }

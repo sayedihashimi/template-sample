@@ -18,6 +18,52 @@ To get started creating templates, take a look at the following resources.
  - [Custom templates for dotnet new
 ](https://docs.microsoft.com/en-us/dotnet/core/tools/custom-templates)
 
+## Template analyzer
+
+Sayed is working in his free time to create a tool that can be used to analyze .NET Core templates. You can install the analyzer with the command.
+
+```bash
+> dotnet tool install --global sayedha.template.command
+```
+
+For usage info run `templates -h`.
+
+After installing the tool you can invoke it by running `templates` in the command line. You can analyze templates that are stored in a local folder
+with the `-f` parameter. You can also analyze templates that are contained in a NuGet package (.nupkg) file with the `-p` switch.
+
+For example to analyze a folder you would run.
+
+```bash
+> templates -f <path-to-folder>
+```
+
+When you pass in a path, the tool will search the sub-folders to discover templates. If you are building several templates, you can pass
+in a parent folder that contains all the templates, and each template that is discovered will be analyzed.
+
+### What the tool looks for
+
+Error if missing a required property
+-	`$.author`,
+-	`$.sourceName`,
+-	`$.classifications`,
+-	`$.identity`,
+-	`$.name`,
+-	`$.shortName`,
+-	`$.tags`,
+-	`$.tags.language`,
+-	`$.tags.type`
+ 
+Warnings for missing recommended properties
+-	`$.defaultName`,
+-	`$.description`,
+-	`$.symbols`,
+-	`$.symbols.Framework`,
+-	`$.symbols.Framework.choices`
+ 
+Error if `$.tags.type` is not set to either project or item
+Warning if `$.symbols.Framework.type` is not set to parameter.
+Warning if `$.symbols.Framework.datatype` is not set to choice.
+
 ## How to enable cli templates in Visual Studio and Visual Studio for Mac
 
 The feature to show templates that are installed using the command-line interface (cli) is a preview feature. This feature is disabled by default.
