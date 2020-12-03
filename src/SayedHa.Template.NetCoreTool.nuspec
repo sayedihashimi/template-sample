@@ -7,10 +7,10 @@
       Project template for creating a .NET Core tool.
     </description>
     <authors>Sayed Ibrahim Hashimi</authors>
+    <license type="expression">Apache-2.0</license>
     <packageTypes>
       <packageType name="Template" />
     </packageTypes>
-
   </metadata>
   <files>
     <file src="Content\**\*.*" exclude="Content\.vs\**\*.*" target="Content" />
