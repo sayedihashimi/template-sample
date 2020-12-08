@@ -17,7 +17,8 @@ To get started creating templates, take a look at the following resources.
 ](https://devblogs.microsoft.com/dotnet/how-to-create-your-own-templates-for-dotnet-new/)
  - [Custom templates for dotnet new
 ](https://docs.microsoft.com/en-us/dotnet/core/tools/custom-templates)
-
+ - [Sources for asp.net core templates](https://github.com/dotnet/aspnetcore/tree/master/src/ProjectTemplates)
+ 
 ## Template analyzer
 
 Sayed is working in his free time to create a tool that can be used to analyze .NET Core templates. You can install the analyzer with the command.
