@@ -273,7 +273,7 @@ The schema that you should use when creating this file is shown below.
 
 ### How to add an icon to be shown in Visual Studio
 
-To add an icon, you will need to declare that in the `ide.host.json` file.
+To add an icon, you will need to declare that in the `ide.host.json` file. The icon file should be a `.png` file.
 The icon file should be in, or under, the `.template.config` folder. In the `ide.host.json` file declare the icon property as shown.
 
 ```json
