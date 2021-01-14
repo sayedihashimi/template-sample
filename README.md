@@ -388,3 +388,39 @@ After creating the .nupkg file you can examine it by extracting the contents usi
 The .nupkg file is just a .zip file with a different file extension.
 Double check that the `.template.config` folder is in the package as well as the `template.json` file
 and any host files.
+
+
+### How to prevent showing a template in Visual Studio
+
+If you have a template, and do not want that template to appear in Visual Studio when it's been installed using `dotnet new --install`
+add the `unsupportedHosts` property. For example, see the `ide.host.json` file below.
+
+```json
+{
+  "$schema": "http://json.schemastore.org/vs-2017.3.host",
+  "icon": "icon.png",
+  "symbolInfo": [
+    {
+      "id": "AuthorName",
+      "name": {
+        "text": "Author Name"
+      },
+      "isVisible": "true"
+    },
+    {
+      "id": "Description",
+      "name": {
+        "text": "Description"
+      },
+      "isVisible": "true"
+    }
+  ],
+  "unsupportedHosts": [
+    { 
+      "id": "vs"
+    } 
+  ]
+}
+```
+
+The host identifier of `"vs"` refers to Visual Studio 2019. To exclude from any other host, use the host identifier associated with that product.
