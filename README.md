@@ -389,7 +389,6 @@ The .nupkg file is just a .zip file with a different file extension.
 Double check that the `.template.config` folder is in the package as well as the `template.json` file
 and any host files.
 
-
 ### How to prevent showing a template in Visual Studio
 
 If you have a template, and do not want that template to appear in Visual Studio when it's been installed using `dotnet new --install`
@@ -424,3 +423,89 @@ add the `unsupportedHosts` property. For example, see the `ide.host.json` file b
 ```
 
 The host identifier of `"vs"` refers to Visual Studio 2019. To exclude from any other host, use the host identifier associated with that product.
+
+## How to ship a template inside of a Visual Studio Extension (vsix)
+
+If you are developing a [Visual Studio extension](https://docs.microsoft.com/visualstudio/extensibility/starting-to-develop-visual-studio-extensions?view=vs-2019) (.vsix file extension), you can deliver your templates inside of the vsix instead of relying on the end-user installing templates via `dotnet new --install`. This section will walk you through how to create a vsix that contains templates.
+
+In order to create Visual Studio extensions you'll need to install the [Visual Studio SDK](Install the Visual Studio SDK). Let's create a new Visual Studio extension, and add a template into it.
+
+### Create the Visual Studio Extension project
+
+First we will need to create a new Visual Studio Extension project. If you have an existing project that you are using, you can open your existing project instead of creating a new project. To create the new project, use the New Project dialog in Visual Studio. When you get to open the New Project dialog, you can search for
+"vsix" in the search box on the top right. See the image below.
+
+![New Project Dialog - Search for vsix](media/vs-npd-search-vsix.png)
+
+From the list below you can select VSIX Project, with either language that you prefer. The language of the extension
+doesn't have to be the same language as the template itself. Now that the project is created, we need to make a few
+modifications to support the project templates.
+
+Before starting to add your template into the Visual Studio extension, you should ensure that your template works without issues from the command line.
+You'll also want to ensure you've added the additional info to templates that is 
+needed to support Visual Studio. That information was presented previously in this doc.
+
+To add support for templates in a VSIX project, the following additions need to be made.
+
+ 1. Add the .nupkg file with your template(s) into the project
+ 1. Update the VSIX project file to include a new target
+ 1. Add a pkgdef file to indicate where to look for templates
+ 1. Update the .vsixmanifest file to have a new asset tag for the template
+
+### Adding the .nupkg to your extension
+
+Now you need to add the NuGet package (.nupkg file) to the extension. You'll need to copy the .nupkg file into a folder near the source for the extension. In the in the `vsix-with-template` folder
+the file is placed in the `assets` folder. Now we need to modify the vsix project to pickup, and include, the .nupkg file so that it is included in the final vsix file that is built.
+Add the following target in the vsix project file (.csproj or .vbproj) file.
+
+```xml
+<Target Name="PreCreateVsixContainer" BeforeTargets="GetVsixSourceItems">
+  <ItemGroup>
+    <!-- ensure that the path below is correct -->
+    <_TemplatePackage Include="..\assets\*.nupkg" />
+  </ItemGroup>
+  <Error Text="No template files found." Condition="@(_TemplatePackage-&gt;Count()) == 0" />
+  <Message Text="Template nuget packages found: @(_TemplatePackage)" Importance="low" />
+  <!-- don't modify the following, the pkgdef file uses the path below -->
+  <ItemGroup>
+    <VSIXSourceItem Include="@(_TemplatePackage)">
+      <VSIXSubPath>ProjectTemplates\</VSIXSubPath>
+    </VSIXSourceItem>
+  </ItemGroup>
+</Target>
+```
+
+The `PreCreateVsixContainer` target will be called during the build process. It will look for .nupkg files in the assets folder and then include them in the vsix that
+is produced from the build. You may need to customize the path to where the target looks for these .nupkg files. You can verify that the package was included successfully
+by opening, or extracting, the .vsix file with your favorite zip utility. The package should be in the `ProjectTemplates` in the vsix.
+Now that you've added the NuGet package, and updated the build process to include it, we can move on to the next step.
+
+### Adding a pkgdef file
+
+Now that the package is in the vsix, we need to add a pkgdef file so that the extension will register the templates during installation. Add a new file named `Templates.pkgdef` to your
+vsix project. If you are using Visual Studio, you can use the text file item template in the New Item dialog. It's important that the name of this .pkgdef file is different from the
+name of the vsix project. If your vsix project is named `Templates`, then you'll need to change the name of the new .pkgdef file you just added. The content of this new .pkgdef
+should be similar to the following.
+
+```
+[$RootKey$\TemplateEngine\Templates\sayedha.template.netcoretool.nuspec\1.0.0]
+"InstalledPath"="$PackageFolder$\ProjectTemplates"
+```
+
+Here the only values that you want to modify are `sayedha.template.netcoretool.nuspec\1.0.0`. You should use a path that is likely to be unique to your organization and project.
+It doesn't have to match the project or templates that you are including. You can customize the version number in the path as needed as well. The second line in the pkgdef file,
+indicates where the .nupkg files are located relative to the vsix install folder. You shouldn't modify the second line.
+
+### Update the .vsixmanifest
+
+Now we are on the last step. The .vsixmanifest file needs to be updated to pickup the new pkgdef file you just created. Open the `source.extension.vsixmanifest` file and add the
+asset tag below into the `Assets` element.
+
+```
+<Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Templates.pkgdef" /> 
+```
+
+Adding the asset tag causes Visual Studio to process the new pkgdef file when the extension is installed.
+
+That's it. Now you can build the VSIX project, install the extension and you should see your new template. The next step is to distribute your new extension. You can do that
+by sharing the .vsix file directly, or publishing to the [Visual Studio Marketplace](https://marketplace.visualstudio.com/)
