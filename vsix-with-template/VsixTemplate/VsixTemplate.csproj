@@ -77,9 +77,12 @@
   -->
   <Target Name="PreCreateVsixContainer" BeforeTargets="GetVsixSourceItems">
     <ItemGroup>
+      <!-- ensure that the path below is correct -->
       <_TemplatePackage Include="..\assets\*.nupkg" />
     </ItemGroup>
     <Error Text="No template files found." Condition="@(_TemplatePackage-&gt;Count()) == 0" />
+    <Message Text="Template nuget packages found: @(_TemplatePackage)" Importance="low" />
+    <!-- don't modify the following, the pkgdef file uses the path below -->
     <ItemGroup>
       <VSIXSourceItem Include="@(_TemplatePackage)">
         <VSIXSubPath>ProjectTemplates\</VSIXSubPath>
