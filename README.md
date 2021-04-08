@@ -350,15 +350,15 @@ It's recommended that you delete the cache folders that are used for the templat
 Here is a PowerShell function that you can add to your profile to make this simpler
 
 ```ps
-    [cmdletbinding()]
-    param(
-        [string]$templateEngineUserDir = (join-path -Path $env:USERPROFILE -ChildPath .templateengine)
-    )
-    process{
-        'resetting dotnet new templates. folder: "{0}"' -f $templateEngineUserDir | Write-host
-        get-childitem -path $templateEngineUserDir -directory | Select-Object -ExpandProperty FullName | remove-item -recurse -force
-        &dotnet new --debug:reinit
-    }
+[cmdletbinding()]
+param(
+    [string]$templateEngineUserDir = (join-path -Path $env:USERPROFILE -ChildPath .templateengine)
+)
+process{
+    'resetting dotnet new templates. folder: "{0}"' -f $templateEngineUserDir | Write-host
+    get-childitem -path $templateEngineUserDir -directory | Select-Object -ExpandProperty FullName | remove-item -recurse -force
+    &dotnet new --debug:reinit
+}
 ```
 
 ## Common issues
