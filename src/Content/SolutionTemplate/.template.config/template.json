@@ -12,6 +12,10 @@
   },
   "sourceName": "SayedHa.Web",
   "preferNameDirectory": true,
+  "guids": [
+    "0E62310C-D76A-4681-9926-B1BFFDC379FC",
+    "032123E7-E4E0-4B17-9564-ECA4B57F30B7"
+  ],
   "symbols": {
     "Framework": {
       "type": "parameter",

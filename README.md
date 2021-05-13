@@ -1,4 +1,4 @@
-# Template sample
+# Info on how to create templates that work in dotnet new and Visual Studio/Visual Studio for Mac
 
 This repo contains a couple samples showing how you can create a .net core template that can be used either by the
 dotnet command line (`dotnet new`) or Visual Studio & Visual Studio for Mac. For more info see [.NET CLI Templates in Visual Studio
@@ -439,6 +439,47 @@ add the `unsupportedHosts` property. For example, see the `ide.host.json` file b
 ```
 
 The host identifier of `"vs"` refers to Visual Studio 2019. To exclude from any other host, use the host identifier associated with that product.
+
+## How to create a multi-project (Solution) template
+Creating a multi-project (solution) template, is very similar to creating a single project template. You'll need to make the following changes to properly
+create a solution template.
+
+ 1. Make sure that the `.template.config` folder is in the correct folder. It likely should be in the root of the solution. The `.sln` file should be either in the
+ same directory as `.template.config` or under it. Same goes for all the content (i.e. projects) that the template should contain.
+ 1. In the `template.json` file change the `type` tag to be `solution` instead of `project`.
+ 1. Update `template.json` to create unique GUIDs to replace the Project ID in the `.sln` file.
+
+For the last step, we will need to update the `template.json` file. You can use the `guids` property to help. Below is a sample
+
+The Project ID values can be found in the `.sln` file. For example here is a snippet from the SolutionTemplate sample in this repo.
+
+```
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{3C7060D1-D7AF-4B5D-BF1F-BC0E4F39E7ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{526E49A6-E41B-4136-8662-FC7BF000776A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayedHa.Web.MyWeb", "SayedHa.Web.MyWeb\SayedHa.Web.MyWeb.csproj", "{0E62310C-D76A-4681-9926-B1BFFDC379FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayedHa.Web.MyClassLibrary", "SayedHa.Web.MyClassLibrary\SayedHa.Web.MyClassLibrary.csproj", "{032123E7-E4E0-4B17-9564-ECA4B57F30B7}"
+EndProject
+Global
+```
+
+The Project ID is the last Guid listed in the `Project` node. Below is a sample showing how to get those guids to be updated. Full sample is at [template.json](src/Content/SolutionTemplate/.template.config)
+
+```json
+...
+  "preferNameDirectory": true,
+  "guids": [
+    "FAE04EC0-301F-11D3-BF4B-00C04F79EFBC",
+    "12aa8f4e-a4aa-4ac1-927c-94cb99485ef1"
+  ],
+  "symbols": {
+...
+```
+
+ Note in the initial preview of Visual Studio where this support appeared, we had a bug that required the `.sln` file to be listed in `primaryOutputs`.
 
 ## How to ship a template inside of a Visual Studio Extension (vsix)
 
