@@ -35,7 +35,7 @@ with the `-f` parameter. You can also analyze templates that are contained in a 
 For example to analyze a folder you would run.
 
 ```bash
-> templates -f <path-to-folder>
+> templates analyze -f <path-to-folder>
 ```
 
 When you pass in a path, the tool will search the sub-folders to discover templates. If you are building several templates, you can pass
