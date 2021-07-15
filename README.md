@@ -553,6 +553,10 @@ Here the only values that you want to modify are `sayedha.template.netcoretool.n
 It doesn't have to match the project or templates that you are including. You can customize the version number in the path as needed as well. The second line in the pkgdef file,
 indicates where the .nupkg files are located relative to the vsix install folder. You shouldn't modify the second line.
 
+You should also mark the Templates.pkgdef file as Content and IncludeInVsix in the properties grid. See the image below.
+
+![tempaltes.pkgdef properties grid](media/vs-templates-pkgdef-props.png)
+
 ### Update the .vsixmanifest
 
 Now we are on the last step. The .vsixmanifest file needs to be updated to pickup the new pkgdef file you just created. Open the `source.extension.vsixmanifest` file and add the
