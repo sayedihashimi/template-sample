@@ -10,6 +10,73 @@ Add an issue here, or reach out to [@SayedIHashimi](https://twitter.com/sayediha
 
 To discover templates that have already been created go to https://dotnetnew.azurewebsites.net/.
 
+The main content here assumes that you are working with Visual Studio 2022 and .net 6. Visual Studio 2022/.net 6 has some updates to the community template experience
+that Visual Studio 2019 doesn't have. At the bottom there is a section that describes the 
+[additional work that is needed to fully support VS2019](#supporting-visual-studio-2019).
+
+## Finding and installing templates
+
+In .net 6 there has been improvements to `dotnet new --search` to find templates that are published on `nuget.org`.
+
+You can use the integrated help to learn more about how to use the search command. You can get the command specific help by executing
+`dotnet new --search -h`.
+
+To search for a template by name the syntax you'll use is `dotnet new <TEMPLATE_NAME> --search`. For example, if you are looking for the .NET Boxed templates,
+you can execute `dotnet new boxed --search`. When I executed this command the results I received are below.
+
+```bash
+> dotnet new boxed --search
+Searching for the templates...
+Matches from template source: NuGet.org
+These templates matched your input: 'boxed'
+
+Template Name                                  Short Name  Author        Language  Package                       Downloads
+---------------------------------------------  ----------  ------------  --------  ----------------------------  ---------
+ASP.NET Core API Boxed                         api         .NET Boxed    [C#]      Boxed.Templates                     39k
+ASP.NET Core GraphQL Boxed                     graphql     .NET Boxed    [C#]      Boxed.Templates                     39k
+ASP.NET Core Orleans Boxed                     orleans     .NET Boxed    [C#]      Boxed.Templates                     39k
+Boxed templates: Sophon.Boxed.BasicConsoleApp  bca         ZhaoBingwang  [C#]      Sophon.Boxed.BasicConsoleApp         2k
+Boxed templates: Sophon.Boxed.BasicWebApi      bwa         ZhaoBingwang  [C#]      Sophon.Boxed.BasicWebApi             1k
+NuGet Package Boxed                            nuget       .NET Boxed    [C#]      Boxed.Templates                     39k
+
+
+To use the template, run the following command to install the package:
+   dotnet new --install <PACKAGE_ID>
+Example:
+   dotnet new --install Boxed.Templates
+```
+
+Since we are interested in the .NET Boxed templates, the install command would be `dotnet new --install Boxed.Templates`. After installing these templates
+you can use those templates from the CLI using `dotnet new` or Visual Studio.
+
+## How to uninstall templates
+
+The command to use to uninstall templates is `dotnet new --uninstall`. If you simply execute `dotnet new --uninstall` it will display a list of template packs
+that have been installed, as well as a command for every template pack that you can use to uninstall that template pack. On my machine I have the .NET Boxed template pack
+installed. When I execute `dotnet new --uninstall` the result is shown below.
+
+```bash
+> dotnet new --uninstall
+Currently installed items:
+   Boxed.Templates
+      Version: 6.10.0
+      Details:
+         Author: Muhammad Rehan Saeed (RehanSaeed.com)
+         NuGetSource: https://api.nuget.org/v3/index.json
+      Templates:
+         ASP.NET Core API Boxed (api) C#
+         .editorconfig file (editorconfig) C#
+         .gitattributes file (gitattributes) C#
+         ASP.NET Core GraphQL Boxed (graphql) C#
+         NuGet Package Boxed (nuget) C#
+         ASP.NET Core Orleans Boxed (orleans) C#
+      Uninstall Command:
+         dotnet new --uninstall Boxed.Templates
+```
+
+The command to unstall this template pack is shown on the last line `dotnet new --uninstall Boxed.Templates`. After uninstalling the template, you will no longer
+be able to access that via `dotnet new` or Visual Studio. If you are using Visual Studio 2019, it's recommended that you restart Visual Studio after uninstalling templates.
+
 ## Getting started creating templates
 
 To get started creating templates, take a look at the following resources.
@@ -65,34 +132,7 @@ Error if `$.tags.type` is not set to either project or item
 Warning if `$.symbols.Framework.type` is not set to parameter.
 Warning if `$.symbols.Framework.datatype` is not set to choice.
 
-## How to enable cli templates in Visual Studio and Visual Studio for Mac
-
-The feature to show templates that are installed using the command-line interface (cli) is a preview feature. This feature is disabled by default.
-
-To enable this feature in ***Visual Studio***:
-
-First open the Options dialog, go to `Tools > Options`. In the dialog go to `Environment > Preview Features` and then on the right-hand side and select the
-preview feature named *Show all .NET Core templates in the New project dialog*. For more info see [.NET CLI Templates in Visual Studio
-](https://devblogs.microsoft.com/dotnet/net-cli-templates-in-visual-studio/).
-
-![Visual Studio - Tool > Options > Environment > Preview features](media/vs-preview-features.png)
-
-To enable this feature inn ***Visual Studio for Mac***:
-
-![Visual Studio - Tool > Options > Environment > Preview features](media/vsmac-preview-features.png)
-
-First open the Preferences dialog, go to `Visual Studio (menu) > Preferences...`. In the list on the
-left hand side, select `Other > Preview Features` and select the
-preview feature named *Show all .NET Core templates in the New project dialog*.
-
-## Visual Studio support
-
-Starting in previews of 16.8 of Visual Studio we have a feature that can be enabled to show the templates
-which have been installed with `dotnet new`. For more info on that take a look at the blog post [.NET CLI Templates in Visual Studio
-](https://devblogs.microsoft.com/dotnet/net-cli-templates-in-visual-studio/).
-
-There are some things that you'll want to make sure you have defined to ensure a good experience for
-Visual Studio users.
+## Some important things needed to create good templates
 
 ### Use the schema for completions and validation
 
@@ -257,85 +297,11 @@ be replaced with the new port number.
 
 For a full example of `sourceName` see [src/Content/MyWebApp/.template.config/template.json](template.json)
 
-### Add an `ide.host.json` file
-
-In order to get the best support in Visual Studio, you'll want to add an `ide.host.json` file. This file should 
-be in the `.template.config` folder next to the `template.json` file. You'll need to create this file in order to
-show an icon for the template, to display parameters, to customize the text, and other features.
-
-The schema that you should use when creating this file is shown below.
-
-```json
-{
-  "$schema": "http://json.schemastore.org/vs-2017.3.host"
-}
-```
-
-### How to add an icon to be shown in Visual Studio
-
-To add an icon, you will need to declare that in the `ide.host.json` file. The icon file should be a `.png` file.
-The icon file should be in, or under, the `.template.config` folder. In the `ide.host.json` file declare the icon property as shown.
-
-```json
-{
-  "icon": "icon.png"
-}
-```
-
-If the icon file is in a sub-folder, provide a relative path in the `icon` declaration.
-
-In the image below the icon for the sample console template is shown.
-
-![New Project Dialog - Custom template with icon](media/vs-npd-custom-template.png)
-
-### How to make a parameter visible in Visual Studio
-
-In `template.json` you can declare any number of parameters. Those parameters will not by default show up in
-Visual Studio. You need to specify which ones should show up in Visual Studio with an `ide.host.json` file.
-The `MyCommand` sample template in this repo has three parameters defined.
-
- - Framework
- - AuthorName
- - Description
-
-The `Framework` parameter defines the set of choices of target framework that the template supports. This parameter
-should always be defined for .NET Core templates. This parameter is special, and doesn't need to be declared in the
-`ide.host.json` file to be shown in Visual Studio. If this parameter is defined, the Target Framework dropdown in the New Project Dialog will automatically be shown.
-
-In order to show the other two parameters, you will need to add a file named `ide.host.json` to the 
-`.template.config` folder. Below is a sample file that shows how to make those appear in Visual Studio.
-
-```json
-{
-  "$schema": "http://json.schemastore.org/vs-2017.3.host",
-  "icon": "icon.png",
-  "symbolInfo": [
-    {
-      "id": "AuthorName",
-      "name": {
-        "text": "Author Name"
-      },
-      "isVisible": "true"
-    },
-    {
-      "id": "Description",
-      "name": {
-        "text": "Description"
-      },
-      "isVisible": "true"
-    }
-  ]
-}
-```
-
-After adding this declaration, when the template is used in Visual Studio the parameters
-will be presented to the user as
-
-![New Project Dialog - Additional Info Page](media/vs-addl-info-page.png)
-
 ## How to test template changes locally
 
-In order for a template to appear in Visual Studio it needs to be installed using a NuGet package
+In Visual Studio 2022 you can install templates either via a NuGet package (.nupkg file) or via the folder based path (`dotnet new --install [local-file-path]`).
+
+In order for a template to appear in Visual Studio 2019 it needs to be installed using a NuGet package
 (.nupkg file). When developing templates locally, when you are ready to test your template using
 Visual Studio, follow the steps below.
 
@@ -570,3 +536,133 @@ Adding the asset tag causes Visual Studio to process the new pkgdef file when th
 
 That's it. Now you can build the VSIX project, install the extension and you should see your new template. The next step is to distribute your new extension. You can do that
 by sharing the .vsix file directly, or publishing to the [Visual Studio Marketplace](https://marketplace.visualstudio.com/)
+
+## Supporting Visual Studio 2019
+
+We made some additional changes in Visual Studio 2022/.net 6, which Visual Studio 2019/.net 5 doesn't have. If you have a template(s) that need to support Visual Studio 2019/.net 5, you may need to make some additional changes to get the templates to work in Visual Studio 2019. Below is a summary of the additional work that is needed.
+
+Limitations of Visual Studio 2019 and/or .net 5 regarding community templates.
+
+ - Search functionality in `dotnet new` is not as robust as in .net 6.
+ - VS2019 will need to have the icon and parameter info listed in the `ide.host.json` file. Parameters are not automatically shown in Visual Studio.
+ - VS2019 requires a VS restart to get newly installed templates to appear in the IDE
+ - In VS2019 showing CLI templates is disabled by default, see below on how to enable showing those.
+ - In VS2019, displaying templates that have been installed with a folder path isn't supported. All templates need to be installed via a NuGet package (.nupkg file).
+
+***TODO: more content will be added soon***
+
+## How to enable cli templates in Visual Studio and Visual Studio for Mac
+
+The feature to show templates that are installed using the command-line interface (cli) is a preview feature. This feature is disabled by default.
+
+To enable this feature in ***Visual Studio***:
+
+First open the Options dialog, go to `Tools > Options`. In the dialog go to `Environment > Preview Features` and then on the right-hand side and select the
+preview feature named *Show all .NET Core templates in the New project dialog*. For more info see [.NET CLI Templates in Visual Studio
+](https://devblogs.microsoft.com/dotnet/net-cli-templates-in-visual-studio/).
+
+![Visual Studio - Tool > Options > Environment > Preview features](media/vs-preview-features.png)
+
+To enable this feature inn ***Visual Studio for Mac***:
+
+![Visual Studio - Tool > Options > Environment > Preview features](media/vsmac-preview-features.png)
+
+First open the Preferences dialog, go to `Visual Studio (menu) > Preferences...`. In the list on the
+left hand side, select `Other > Preview Features` and select the
+preview feature named *Show all .NET Core templates in the New project dialog*.
+
+## Visual Studio support
+
+Starting in previews of 16.8 of Visual Studio we have a feature that can be enabled to show the templates
+which have been installed with `dotnet new`. For more info on that take a look at the blog post [.NET CLI Templates in Visual Studio
+](https://devblogs.microsoft.com/dotnet/net-cli-templates-in-visual-studio/).
+
+There are some things that you'll want to make sure you have defined to ensure a good experience for
+Visual Studio users.
+
+### Add an `ide.host.json` file
+
+Note: in Visual Studio 2022+ the `ide.host.json` file is no longer required for the template to appear in Visual Studio.
+If there is an icon named `icon.png` in the `.template.config` folder, it will be used for the project template icon in Visual Studio.
+By default all template parameters will appear in the New Project Dialog in Visual Studio.
+
+In order to get the best support in Visual Studio, you'll want to add an `ide.host.json` file. This file should 
+be in the `.template.config` folder next to the `template.json` file. You'll need to create this file in order to
+show an icon for the template, to display parameters, to customize the text, and other features.
+
+The schema that you should use when creating this file is shown below.
+
+```json
+{
+  "$schema": "http://json.schemastore.org/vs-2017.3.host"
+}
+```
+
+### How to add an icon to be shown in Visual Studio
+
+Note: In Visual Studio 2022, you don't need to create an `ide.host.json` file to include an icon for the project template.
+If there is an icon file named `icon.png` in the `.template.config` file, it will be picked up automatically. If you'd like to customize
+that, then create an `ide.host.json` file as described below.
+
+To add an icon, you will need to declare that in the `ide.host.json` file. The icon file should be a `.png` file.
+The icon file should be in, or under, the `.template.config` folder. In the `ide.host.json` file declare the icon property as shown.
+
+```json
+{
+  "icon": "icon.png"
+}
+```
+
+If the icon file is in a sub-folder, provide a relative path in the `icon` declaration.
+
+In the image below the icon for the sample console template is shown.
+
+![New Project Dialog - Custom template with icon](media/vs-npd-custom-template.png)
+
+### How to make a parameter visible in Visual Studio
+
+Note: in Visual Studio 2022+, by default all template parameters will appear in the New Project Dialog. You do not need to create
+and `ide.host.json` file if you want all the parameters to be shown. You can create an `ide.host.json` if you need to hide some parameters.
+
+In `template.json` you can declare any number of parameters. Those parameters will not by default show up in
+Visual Studio. You need to specify which ones should show up in Visual Studio with an `ide.host.json` file.
+The `MyCommand` sample template in this repo has three parameters defined.
+
+ - Framework
+ - AuthorName
+ - Description
+
+The `Framework` parameter defines the set of choices of target framework that the template supports. This parameter
+should always be defined for .NET Core templates. This parameter is special, and doesn't need to be declared in the
+`ide.host.json` file to be shown in Visual Studio. If this parameter is defined, the Target Framework dropdown in the New Project Dialog will automatically be shown.
+
+In order to show the other two parameters, you will need to add a file named `ide.host.json` to the 
+`.template.config` folder. Below is a sample file that shows how to make those appear in Visual Studio.
+
+```json
+{
+  "$schema": "http://json.schemastore.org/vs-2017.3.host",
+  "icon": "icon.png",
+  "symbolInfo": [
+    {
+      "id": "AuthorName",
+      "name": {
+        "text": "Author Name"
+      },
+      "isVisible": "true"
+    },
+    {
+      "id": "Description",
+      "name": {
+        "text": "Description"
+      },
+      "isVisible": "true"
+    }
+  ]
+}
+```
+
+After adding this declaration, when the template is used in Visual Studio the parameters
+will be presented to the user as
+
+![New Project Dialog - Additional Info Page](media/vs-addl-info-page.png)
