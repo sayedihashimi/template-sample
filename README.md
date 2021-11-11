@@ -14,6 +14,9 @@ The main content here assumes that you are working with Visual Studio 2022 and .
 that Visual Studio 2019 doesn't have. At the bottom there is a section that describes the 
 [additional work that is needed to fully support VS2019](#supporting-visual-studio-2019).
 
+I have some templates that can be used to simplifying creating templates at https://github.com/sayedihashimi/sayedha.templates. These are a 
+good reference for creating your own templates as well.
+
 ## Finding and installing templates
 
 In .net 6 there has been improvements to `dotnet new --search` to find templates that are published on `nuget.org`.
