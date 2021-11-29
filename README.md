@@ -552,6 +552,45 @@ Limitations of Visual Studio 2019 and/or .net 5 regarding community templates.
  - In VS2019 showing CLI templates is disabled by default, see below on how to enable showing those.
  - In VS2019, displaying templates that have been installed with a folder path isn't supported. All templates need to be installed via a NuGet package (.nupkg file).
 
+### Parameters
+
+By default all parameters declared in `template.json` will appear in Visual Studio 2022 if you do ***not*** have a `ide.host.json` (or any Visual Studio host file) file. To control the behavior you can define the tag below in `template.json` to explicitly state if all parameters should appear or not.
+
+```json
+  "tags": {
+    "vs_showParametersByDefault": "false"
+  },
+```
+
+Values for this tag can be either 'true' or 'false'.
+
+The default value for `vs_showParametersByDefault` is `true` if there is no host file detected, and `false` if a host file is detected.
+
+If you want all parameters to be shown except a set of specific templates, you can use
+the `vs_parametersToHide` in `tags` to hide those specific parameters. The value for this tag
+should be a semi-colon delimeted list of parameter names. For example.
+
+```json
+"tags": {
+    "vs_parametersToHide": "authorName;useHttps"
+  },
+```
+
+Below is some more info based on if a host file is present or not.
+
+***No host file present***
+All templates will be shown by default if `vs_showParametersByDefault` isn't defined in tags. If `vs_showParametersByDefault` is defined in `tags`,
+that value will be used to determine if parameters are shown be defult or not. If all templates
+are shown but there are parameter names listed in `vs_parametersToHide`, those will not be shown.
+
+***Host file present***
+All templates will not be shown by default. To get all of them to appear, set 'vs_showParametersByDefault` to true.
+
+If `vs_showParametersByDefault` is set to true, and some parameter names are listed in
+`vs_parametersToHide`, those will be not be shown in Visual Studio.
+
+Any parameters listed in the host file with `isVisible`=`true` will be shown.
+
 ***TODO: more content will be added soon***
 
 ## How to enable cli templates in Visual Studio and Visual Studio for Mac
