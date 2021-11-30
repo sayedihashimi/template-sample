@@ -332,6 +332,23 @@ function Reset-Templates{
 }
 ```
 
+### Some issues that can occur when developing folder based templates
+
+#### Template updates are not detected
+If you are installing/uninstalling folder based tempaltes, you may run into an issue where
+all template changes are not picked up. For example, you change the description,
+or add a parameter, in some cases those changes may not be detected by the
+Template Engine. To force an update run the command below.
+
+```bash
+dotnet new --debug:rebuildcache
+```
+
+#### Unable to uninstall a template
+
+If you are having issues uninstalling a template that was installed from a folder,
+try to change directories (`cd`) to a different folder and try again.
+
 ## Common issues
 
 If your template is not appearing in Visual Studio, check the following.
