@@ -440,7 +440,7 @@ For the last step, we will need to update the `template.json` file. You can use 
 The Project ID values can be found in the `.sln` file. For example here is a snippet from the SolutionTemplate sample in this repo.
 
 ```
-MinimumVisualStudioVersion = 10.0.40219.1
+...
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{3C7060D1-D7AF-4B5D-BF1F-BC0E4F39E7ED}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{526E49A6-E41B-4136-8662-FC7BF000776A}"
@@ -450,6 +450,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayedHa.Web.MyClassLibrary", "SayedHa.Web.MyClassLibrary\SayedHa.Web.MyClassLibrary.csproj", "{032123E7-E4E0-4B17-9564-ECA4B57F30B7}"
 EndProject
 Global
+...
 ```
 
 The Project ID is the last Guid listed in the `Project` node. Below is a sample showing how to get those guids to be updated. Full sample is at [template.json](src/Content/SolutionTemplate/.template.config)
@@ -458,8 +459,8 @@ The Project ID is the last Guid listed in the `Project` node. Below is a sample 
 ...
   "preferNameDirectory": true,
   "guids": [
-    "FAE04EC0-301F-11D3-BF4B-00C04F79EFBC",
-    "12aa8f4e-a4aa-4ac1-927c-94cb99485ef1"
+    "0E62310C-D76A-4681-9926-B1BFFDC379FC",
+    "032123E7-E4E0-4B17-9564-ECA4B57F30B7"
   ],
   "symbols": {
 ...
