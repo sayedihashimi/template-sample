@@ -433,8 +433,26 @@ create a solution template.
  1. Make sure that the `.template.config` folder is in the correct folder. It likely should be in the root of the solution. The `.sln` file should be either in the
  same directory as `.template.config` or under it. Same goes for all the content (i.e. projects) that the template should contain.
  1. In the `template.json` file change the `type` tag to be `solution` instead of `project`.
+ 1. Update the file name of the solution to be different from `sourceName` or `defaultName`, See below for more info.
  1. Update `template.json` to create unique GUIDs to replace the Project ID in the `.sln` file.
 
+### Solution name best practices
+
+When creating a solution template, make sure that the file name of the solution doesn't match `sourceName` or `defaultName`
+in `template.json`. For example, if `sourceName` is set to `ContosoBilling`, ensure that the solution file is NOT named 
+`ContosoBilling.sln`. You can change it to `ContosoBilling.app.sln` and then apply a rename if you want the generated
+solution file name to match `sourceName`.
+
+In the `sources` property in `template.json` add the following to rename the soluton file when projects are created
+using `dotnet new`. In Visual Studio the name specified in the New Project Dialog will be used.
+```json
+"condition": "(HostIdentifier == \"dotnetcli\" ||  HostIdentifier == \"dotnetcli-preview\")",
+"rename": {
+  "ContosoBilling.app.sln": "ContosoBilling.sln"
+}
+```
+
+### Updating guids
 For the last step, we will need to update the `template.json` file. You can use the `guids` property to help. Below is a sample
 
 The Project ID values can be found in the `.sln` file. For example here is a snippet from the SolutionTemplate sample in this repo.
