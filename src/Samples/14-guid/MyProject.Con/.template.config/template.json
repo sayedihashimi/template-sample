@@ -25,37 +25,26 @@
         "format":"N"
       }
     },
-    "id02":{
-      "type": "generated",
-      "generator": "guid",
-      "replaces": "myid02",
-      "parameters": {
-        "format":"D"
-      }
+    "id01-N": {
+      "type": "bind",
+      "binding": "id01-N",
+      "replaces": "myid01-N"
     },
-    "id03":{
-      "type": "generated",
-      "generator": "guid",
-      "replaces": "myid03",
-      "parameters": {
-        "format":"B"
-      }
+    "id01-D": {
+      "type": "bind",
+      "binding": "id01-D",
+      "replaces": "myid01-D"
     },
-    "id04":{
-      "type": "generated",
-      "generator": "guid",
-      "replaces": "myid04",
-      "parameters": {
-        "format":"P"
-      }
+    "id01-N-LC": {
+      "type": "bind",
+      "binding": "id01-n",
+      "replaces": "myid01-n"
     },
-    "id05":{
-      "type": "generated",
-      "generator": "guid",
-      "replaces": "myid05",
-      "parameters": {
-        "format":"X"
-      }
+    "id01-D-LC": {
+      "type": "bind",
+      "binding": "id01-d",
+      "replaces": "myid01-d"
+    },
     }
   }
 }
