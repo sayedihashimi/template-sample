@@ -17,34 +17,50 @@
     "12aa8f4e-a4aa-4ac1-927c-94cb99485ef1"
   ],
   "symbols":{
-    "id01":{
+    "id01": {
       "type": "generated",
       "generator": "guid",
       "replaces": "myid01",
       "parameters": {
-        "format":"N"
+        "format": "NDnd",
+        "defaultFormat": "N"
       }
     },
-    "id01-N": {
-      "type": "bind",
-      "binding": "id01-N",
-      "replaces": "myid01-N"
+    "id02": {
+      "type": "generated",
+      "generator": "guid",
+      "replaces": "myid02",
+      "parameters": {
+        "format": "NDnd",
+        "defaultFormat": "D"
+      }
     },
-    "id01-D": {
-      "type": "bind",
-      "binding": "id01-D",
-      "replaces": "myid01-D"
+    "id03": {
+      "type": "generated",
+      "generator": "guid",
+      "replaces": "myid03",
+      "parameters": {
+        "format": "NDnd",
+        "defaultFormat": "P"
+      }
     },
-    "id01-N-LC": {
-      "type": "bind",
-      "binding": "id01-n",
-      "replaces": "myid01-n"
+    "id04": {
+      "type": "generated",
+      "generator": "guid",
+      "replaces": "myid04",
+      "parameters": {
+        "format": "NDnd",
+        "defaultFormat": "B"
+      }
     },
-    "id01-D-LC": {
-      "type": "bind",
-      "binding": "id01-d",
-      "replaces": "myid01-d"
-    },
+    "id05": {
+      "type": "generated",
+      "generator": "guid",
+      "replaces": "myid05",
+      "parameters": {
+        "format": "NDnd",
+        "defaultFormat": "X"
+      }
     }
   }
 }
