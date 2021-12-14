@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Sayed I. Hashimi",
+    "classifications": ["Console","Tool"],
+    "name": "openfile",
+    "defaultName": "MyConsole",
+    "identity": "Sayedha.Templates.Openfile",
+    "shortName": "openfile",
+    "tags": {
+      "language": "C#",
+      "type": "project"
+    },
+    "sourceName": "SampleConsole",
+    "preferNameDirectory": true,
+    "description": "shows how to open a file in VS after project create",
+    "primaryOutputs": [
+      { "path": "SampleConsole.csproj" },
+      { "path": "README.md" }
+    ],
+    "postActions": [
+      {
+        "description": "Opens README.md in the editor",
+        "manualInstructions": [ ],
+        "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
+        "args": {
+          "files": "1"
+        },
+        "continueOnError": true
+      }
+    ]
+  }

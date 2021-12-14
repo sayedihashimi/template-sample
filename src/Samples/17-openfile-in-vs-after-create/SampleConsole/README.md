@@ -1,0 +1,1 @@
+This file will be opened in VS after the project is created.
