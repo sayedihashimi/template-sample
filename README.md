@@ -485,6 +485,38 @@ The Project ID is the last Guid listed in the `Project` node. Below is a sample 
 ```
 
  Note in the initial preview of Visual Studio where this support appeared, we had a bug that required the `.sln` file to be listed in `primaryOutputs`.
+ 
+### Project folder nesting
+ 
+The structure of the generated `.nupkg` file depends on the location of the `.csproj` used to generate it. If the `.csproj` for the template package is in a directory above the template's `\src` directory, your template `.nupkg` will have a [nested structure and will fail to generate any output when invoked](https://github.com/sayedihashimi/template-sample/issues/55).
+ 
+As an example, you might need to have your template `.csproj` outside of the `\src` folder because you are using a `Directory.Build.props` in your `\src` folder that is incompatible with generating the template package.
+ 
+The fix to this issue is to add the `PackagePath="content"` attribute on the `<Content>` element in your template's `.csproj`. This will place the contents of the `\src` directory into the package's `\content` directory, which is the correct location for template packages.
+
+**Before**
+ 
+```xml
+<!-- Template.csproj -->
+
+<ItemGroup>
+    <!-- src\ is the location of the template's source files -->
+    <!-- this will generate a .nupkg structure of \content\Content\(src files) -->
+    <Content Include="src\**\*.*" />
+</ItemGroup>
+```
+
+**After**
+
+
+```xml
+<!-- Template.csproj -->
+
+<ItemGroup>
+     <!-- this will generate a .nupkg structure of \content\(src files) -->
+    <Content Include="src\**\*.*" PackagePath="content" />
+</ItemGroup>
+```
 
 ## How to ship a template inside of a Visual Studio Extension (vsix)
 
