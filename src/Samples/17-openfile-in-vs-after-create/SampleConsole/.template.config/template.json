@@ -13,6 +13,10 @@
     "sourceName": "SampleConsole",
     "preferNameDirectory": true,
     "description": "shows how to open a file in VS after project create",
+    /*
+    More info on primaryOutputs at:
+    https://github.com/dotnet/templating/blob/main/docs/Using-Primary-Outputs-for-Post-Actions.md#example-3---using-primary-output-indexes-in-post-action-arguments
+    */
     "primaryOutputs": [
       { "path": "SampleConsole.csproj" },
       { "path": "README.md" }
