@@ -10,7 +10,7 @@
     "language": "C#",
     "type":"project"
   },
-  "sourceName": "MyProject.Con",
+  "sourceName": "MyProjectCon",
   "preferNameDirectory": true,
   "symbols":{
     "ownername":{
