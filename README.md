@@ -160,7 +160,7 @@ used to replace the `namespace` declaration in generated files.
 }
 ```
 
-For a full example of `sourceName` see [src/Content/MyCommand/.template.config/template.json](template.json)
+For a full example of `sourceName` see [src/Content/MyCommand/.template.config/template.json](src/Content/MyCommand/.template.config/template.json)
 
 ### `defaultName`
 
@@ -175,7 +175,7 @@ When users create projects from the command line with `dotnet new` if the `-n|--
 }
 ```
 
-For a full example of `sourceName` see [src/Content/MyCommand/.template.config/template.json](template.json)
+For a full example of `sourceName` see [src/Content/MyCommand/.template.config/template.json](src/Content/MyCommand/.template.config/template.json)
 
 ### `classifications`
 
@@ -298,7 +298,7 @@ generated port number will be between those. These parameters are optional.
 is the port number that the source files use. Where ever this string is found in the template content, it will
 be replaced with the new port number.
 
-For a full example of `sourceName` see [src/Content/MyWebApp/.template.config/template.json](template.json)
+For a full example of `sourceName` see [src/Content/MyWebApp/.template.config/template.json](src/Content/MyWebApp/.template.config/template.json)
 
 ## How to test template changes locally
 
