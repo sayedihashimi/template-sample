@@ -77,7 +77,7 @@ Currently installed items:
          dotnet new --uninstall Boxed.Templates
 ```
 
-The command to unstall this template pack is shown on the last line `dotnet new --uninstall Boxed.Templates`. After uninstalling the template, you will no longer
+The command to uninstall this template pack is shown on the last line `dotnet new --uninstall Boxed.Templates`. After uninstalling the template, you will no longer
 be able to access that via `dotnet new` or Visual Studio. If you are using Visual Studio 2019, it's recommended that you restart Visual Studio after uninstalling templates.
 
 ## Getting started creating templates
@@ -203,7 +203,7 @@ Here is an example of the declaration.
 
 Note: in the current preview the Visual Studio New Project Dialog will add all classifications from installed 
 templates into the `All Project Types` dropdown. That behavior is likely to change, custom classifications
-will not be listed. You should select the values that you see in Visual Studio (without any additional tempaltes installed) so that the user can filter.
+will not be listed. You should select the values that you see in Visual Studio (without any additional templates installed) so that the user can filter.
 
 ### Language and type
 
@@ -308,7 +308,7 @@ In order for a template to appear in Visual Studio 2019 it needs to be installed
 (.nupkg file). When developing templates locally, when you are ready to test your template using
 Visual Studio, follow the steps below.
 
-It's recommended that you delete the cache folders that are used for the templates. The chache folders are in the user home directory (`~`) under the `.templateengine` folder. The default path on windows is `C:\Users\{username}\.templateengine` and for macOS `/Users/{username}/.templateengine`.
+It's recommended that you delete the cache folders that are used for the templates. The cache folders are in the user home directory (`~`) under the `.templateengine` folder. The default path on windows is `C:\Users\{username}\.templateengine` and for macOS `/Users/{username}/.templateengine`.
 
  1. Close all instances of Visual Studio
  1. Create a NuGet package that has the template
@@ -335,7 +335,7 @@ function Reset-Templates{
 ### Some issues that can occur when developing folder based templates
 
 #### Template updates are not detected
-If you are installing/uninstalling folder based tempaltes, you may run into an issue where
+If you are installing/uninstalling folder based templates, you may run into an issue where
 all template changes are not picked up. For example, you change the description,
 or add a parameter, in some cases those changes may not be detected by the
 Template Engine. To force an update run the command below.
@@ -443,14 +443,30 @@ in `template.json`. For example, if `sourceName` is set to `ContosoBilling`, ens
 `ContosoBilling.sln`. You can change it to `ContosoBilling.app.sln` and then apply a rename if you want the generated
 solution file name to match `sourceName`.
 
-In the `sources` property in `template.json` add the following to rename the soluton file when projects are created
-using `dotnet new`. In Visual Studio the name specified in the New Project Dialog will be used.
-```json
-"condition": "(HostIdentifier == \"dotnetcli\" ||  HostIdentifier == \"dotnetcli-preview\")",
-"rename": {
-  "ContosoBilling.app.sln": "ContosoBilling.sln"
-}
-```
+If the solution's file name is allowed to match the `sourceName`/`defaultName`, Visual Studio users may see an unexpected 
+"File Modification Detected" dialog immediately after the solution is created and will be prompted to reload.
+
+To rename the solution file, make the following changes to `template.json`:
+
+1. In the `symbols` section, add the following binding so that the `HostIdentifier`
+symbol is defined in your template:
+
+    ```json
+    "HostIdentifier": {
+      "type": "bind",
+      "binding": "HostIdentifier"
+    }
+    ```
+
+2. In the `sources` section, add the following modifier to rename the file when projects are created
+using `dotnet new` (in Visual Studio, the name specified in the New Project Dialog will be used):
+
+    ```json
+    "condition": "(HostIdentifier == \"dotnetcli\" ||  HostIdentifier == \"dotnetcli-preview\")",
+    "rename": {
+      "ContosoBilling.app.sln": "ContosoBilling.sln"
+    }
+    ```
 
 ### Updating guids
 For the last step, we will need to update the `template.json` file. You can use the `guids` property to help. Below is a sample
@@ -636,7 +652,7 @@ The default value for `vs_showParametersByDefault` is `true` if there is no host
 
 If you want all parameters to be shown except a set of specific templates, you can use
 the `vs_parametersToHide` in `tags` to hide those specific parameters. The value for this tag
-should be a semi-colon delimeted list of parameter names. For example.
+should be a semi-colon delimited list of parameter names. For example.
 
 ```json
 "tags": {
@@ -648,7 +664,7 @@ Below is some more info based on if a host file is present or not.
 
 ***No host file present***
 All templates will be shown by default if `vs_showParametersByDefault` isn't defined in tags. If `vs_showParametersByDefault` is defined in `tags`,
-that value will be used to determine if parameters are shown be defult or not. If all templates
+that value will be used to determine if parameters are shown by default or not. If all templates
 are shown but there are parameter names listed in `vs_parametersToHide`, those will not be shown.
 
 ***Host file present***
