@@ -1,5 +1,7 @@
+/* contoso specific items below here */
 html {
-  font-size: 14px;
+    font-size: 14px;
+    font-family: 'Geist', sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -12,7 +14,17 @@ html {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bs-body-bg: hsl(0, 0%, 11%);
+        --bs-body-color: hsl(0, 0%, 100%);
+    }
+    body {
+        /*background-color: var(--bs-body-bg);*/
+    }
+}
+/*html {
   position: relative;
   min-height: 100%;
 }
@@ -20,3 +32,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+ul{
+
+}*/

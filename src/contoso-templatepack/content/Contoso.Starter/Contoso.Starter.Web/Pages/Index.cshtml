@@ -1,10 +1,15 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = $"{@DotNetEnv.Env.GetString("COMPANY_NAME")} - home";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Use the resources below to get started with your new web app.</h1>
+    <ul style="text-align:left">
+        <li><a href="#">Getting started with a new web app in Contoso</a></li>
+        <li><a href="#">New web app checklist</a></li>
+        <li><a href="#">Pre-deploy checklist</a></li>
+        <li><a href="#">Localization at Contoso</a></li>
+    </ul>
 </div>
