@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Contoso",
+  "classifications": ["Web","Contoso"],
+  "name": "contoso-webapp",
+  "description": "Project template to get started with a Contoso web app.",
+  "identity": "Contoso.Templates.Project.Webapp.01",
+  "shortName": "cweb",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "$comment_sourceName": "TODO: Source name should follow these rules: https://aka.ms/template-json-source-name. Source name may be removed if replacement for name is not required.",
+  "sourceName": "Contoso.Starter.Web",
+  "defaultName": "NewWebApp",
+  "preferNameDirectory": true
+}
