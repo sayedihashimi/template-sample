@@ -1,4 +1,135 @@
-﻿@font-face {
-    font-family: 'Geist';
-    src: url('fonts/geist/Geist-Regular.woff2') format('woff2');
+﻿/*#if (Font == 'geist')*/
+@font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url("fonts/geist/Geist-Thin.woff2") format("woff2");
 }
+@font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url("fonts/geist/Geist-UltraLight.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url("fonts/geist/Geist-Light.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/geist/Geist-Regular.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("fonts/geist/Geist-Medium.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("fonts/geist/Geist-SemiBold.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/geist/Geist-Bold.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url("fonts/geist/Geist-UltraBlack.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Geist";
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url("fonts/geist/Geist-Black.woff2") format("woff2");
+}
+/*#endif*/
+/*#if (Font == 'raleway')*/
+@font-face {
+    font-family: "Raleway";
+    src: url('../font/raleway-thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Raleway";
+    src: url('../font/raleway-extralight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Raleway";
+    src: url('../font/raleway-light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Raleway";
+    src: url('../font/raleway-regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Raleway";
+    src: url('../font/raleway-medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Raleway";
+    src: url('../font/raleway-semibold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Raleway";
+    src: url('../font/raleway-bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Raleway";
+    src: url('../font/raleway-extrabold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Raleway";
+    src: url('../font/raleway-heavy.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+  }
+  .kern-liga-lnum {
+    -webkit-font-feature-settings: 'kern' 1, 'liga' 1, 'lnum' 1;
+    -moz-font-feature-settings: 'kern' 1, 'liga' 1, 'lnum' 1;
+    -ms-font-feature-settings: 'kern' 1, 'liga' 1, 'lnum' 1;
+    -o-font-feature-settings: 'kern' 1, 'liga' 1, 'lnum' 1;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'lnum' 1;
+  }
+  .no-kern-liga-lnum {
+    -webkit-font-feature-settings: 'kern' 0, 'liga' 0, 'lnum' 0;
+    -moz-font-feature-settings: 'kern' 0, 'liga' 0, 'lnum' 0;
+    -ms-font-feature-settings: 'kern' 0, 'liga' 0, 'lnum' 0;
+    -o-font-feature-settings: 'kern' 0, 'liga' 0, 'lnum' 0;
+    font-feature-settings: 'kern' 0, 'liga' 0, 'lnum' 0;
+  }
+/*#endif*/

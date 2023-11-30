@@ -1,7 +1,14 @@
 /* contoso specific items below here */
+:root {
+    /*#if (Font == 'geist')*/
+    --bs-font-sans-serif: 'Geist', sans-serif;
+    /*#endif*/
+    /*#if (Font == 'raleway')*/
+    --bs-font-sans-serif: 'Raleway', sans-serif;
+    /*#endif*/
+}
 html {
     font-size: 14px;
-    font-family: 'Geist', sans-serif;
 }
 
 @media (min-width: 768px) {

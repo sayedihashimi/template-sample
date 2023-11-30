@@ -21,8 +21,24 @@
       "datatype":"bool",
       "defaultValue": "true"
     }
-  },
-  "sources": [
+    ,"Font":{
+      "type": "parameter",
+      "description": "Font that should be used in the webapp.",
+      "datatype":"choice",
+      "choices": [
+        {
+          "choice": "Geist",
+          "description": "geist"
+        },
+        {
+          "choice": "Raleway",
+          "description": "raleway"
+        }
+      ],
+      "defaultValue": "Geist"
+    }
+  }
+  ,"sources": [
     {
       "modifiers": [
         {

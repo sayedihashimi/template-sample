@@ -11,6 +11,13 @@
             "text": "Add Contoso .env file"
           },
           "isVisible": true
-        }
+        },
+        {
+            "id": "Font",
+            "name": {
+              "text": "Main font"
+            },
+            "isVisible": true
+          }
       ]
   }

@@ -6,7 +6,7 @@
   "name": "contoso-gitattributes",
   "description": "Contoso item template for .gitattributes",
   "identity": "Contoso.Templates.Item.GitAttributes",
-  "shortName": "cec",
+  "shortName": "cga",
   "tags": {
     "language": "C#",
     "type": "item"
