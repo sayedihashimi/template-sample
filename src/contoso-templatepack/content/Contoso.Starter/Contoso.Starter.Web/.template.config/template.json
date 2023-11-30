@@ -13,5 +13,25 @@
   "$comment_sourceName": "TODO: Source name should follow these rules: https://aka.ms/template-json-source-name. Source name may be removed if replacement for name is not required.",
   "sourceName": "Contoso.Starter.Web",
   "defaultName": "NewWebApp",
-  "preferNameDirectory": true
+  "preferNameDirectory": true,
+  "symbols": {
+    "AddEnvFile":{
+      "type": "parameter",
+      "description": "Add the Contoso .env file",
+      "datatype":"bool",
+      "defaultValue": "true"
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(!AddEnvFile)",
+          "exclude": [
+            ".env"
+          ]
+        }
+      ]
+    }
+  ]
 }

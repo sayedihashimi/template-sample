@@ -3,5 +3,14 @@
     "name":{
         "$comment":"This shows how you can override the name of the template in Visual Studio",
         "text": "Contoso Web App"
-    }
+    },
+    "symbolInfo": [
+        {
+          "id": "AddEnvFile",
+          "name": {
+            "text": "Add Contoso .env file"
+          },
+          "isVisible": true
+        }
+      ]
   }
