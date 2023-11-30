@@ -3,37 +3,23 @@
   "$comment": "Code for this template is available at https://github.com/sayedihashimi/template-sample",
   "author": "Contoso",
   "classifications": ["template"],
-  "name": "contosoappsettings",
-  "description": "Contoso item template for appSettings.json and appSettings.development.json",
-  "identity": "Contoso.Templates.Item.AppSettings",
-  "shortName": "cas",
+  "name": "contosoeditorconfig",
+  "description": "Contoso item template for .editorconfig",
+  "identity": "Contoso.Templates.Item.EditorConfig",
+  "shortName": "cec",
   "tags": {
     "language": "C#",
     "type": "item"
   },
-  "defaultName": "appsettings",
+  "defaultName": ".editorconfig",
   "primaryOutputs": [
     {
-      "path": "appsettings.json"
-    },
-    {
-      "path": "appsettings.Development.json"
+      "path": ".editorconfig"
     }
   ],
   "postActions": [
     {
       "id": "openInEditor",
-      "condition": "(HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\")",
-      "description": "Opens generated files in the editor",
-      "manualInstructions": [],
-      "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
-      "args": {
-        "files": "1"
-      },
-      "continueOnError": true
-    },
-    {
-      "id": "openInEditor2",
       "condition": "(HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\")",
       "description": "Opens generated files in the editor",
       "manualInstructions": [],
