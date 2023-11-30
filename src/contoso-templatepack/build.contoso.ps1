@@ -1,16 +1,15 @@
-$scriptDir = split-path -parent $MyInvocation.MyCommand.Definition
-$srcDir = (Join-Path -path $scriptDir src)
-$contentFolder = Join-Path $srcDir Content
+[string]$scriptDir = split-path -parent $MyInvocation.MyCommand.Definition
+[string]$srcDir = (Join-Path -path $scriptDir src)
+#[string]$contentFolder = Join-Path $srcDir Content
+[string]$templatePackName = 'ContosoWebTemplates'
+[string]$templateProjFile = Join-Path $scriptDir ContosoWebTemplates.csproj
+[string]$outputpath = Join-Path $scriptDir nupkg\
+[string]$intoutputpath = join-path $outputpath bin\
 
-$templateProjFile = Join-Path $scriptDir ContosoWebTemplates.csproj
-$outputpath = Join-Path $scriptDir nupkg\
-$intoutputpath = join-path $outputpath bin\
-
-function Reset-Tempaltes(){
-    dotnet new --uninstall $contentFolder
-    dotnet new --uninstall sayedha.templates
-    dotnet new --debug:reinit
-    dotnet new --debug:rebuildcache
+function Reset-Templates(){
+    &dotnet new uninstall $templatePackName
+    #dotnet new --debug:reinit
+    #dotnet new --debug:rebuildcache
 }
 
 function Clean(){

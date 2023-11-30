@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "$comment": "Code for this template is available at https://github.com/sayedihashimi/template-sample",
-  "author": "Sayed Ibrahim Hashimi",
+  "author": "Contoso",
   "classifications": ["template"],
   "name": "appsettings",
   "description": "Contoso item template for appSettings.json and appSettings.development.json",
