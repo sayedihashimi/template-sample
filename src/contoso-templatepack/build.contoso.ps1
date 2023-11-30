@@ -9,6 +9,7 @@ $intoutputpath = join-path $outputpath bin\
 function Reset-Tempaltes(){
     dotnet new --uninstall $contentFolder
     dotnet new --uninstall sayedha.templates
+    dotnet new --debug:reinit
     dotnet new --debug:rebuildcache
 }
 
@@ -27,6 +28,26 @@ function Clean(){
     }
 }
 
+function Install-Template(){
+    [cmdletbinding()]
+    param()
+    process{
+        # build the package
+        dotnet pack $templateProjFile -p:OutputPath=$outputpath -p:BaseIntermediateOutputPath=$intoutputpath
+        [string[]]$nupkgPath = Get-ChildItem -Path $outputpath *.nupkg
+        if(-not ($nupkgPath) -or $nupkgPath.Count -lt 1 || -not ($nupkgPath[0])){
+            'No .nupkg file found in folder "$outputpath"' | Write-Error
+            return
+        }
+        elseif ($nupkgPath.Count -gt 1){
+            'More than one .nupkg file found in folder "$outputpath"' | Write-Error
+            return
+        }
+
+        dotnet new install ('{0}' -f (Get-Item $nupkgPath[0]|Select-Object -ExpandProperty FullName))
+    }
+}
+
 if(-not (test-path $templateProjFile)){
     throw 'Template proj file not found at "' + $templateProjFile + '"'
 }
@@ -34,4 +55,4 @@ if(-not (test-path $templateProjFile)){
 Reset-Templates
 Clean
 
-dotnet pack $templateProjFile -p:OutputPath=$outputpath -p:BaseIntermediateOutputPath=$intoutputpath
+Install-Template
