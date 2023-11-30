@@ -3,7 +3,7 @@
   "$comment": "Code for this template is available at https://github.com/sayedihashimi/template-sample",
   "author": "Contoso",
   "classifications": ["template"],
-  "name": "contosoappsettings",
+  "name": "contoso-appsettings",
   "description": "Contoso item template for appSettings.json and appSettings.development.json",
   "identity": "Contoso.Templates.Item.AppSettings",
   "shortName": "cas",

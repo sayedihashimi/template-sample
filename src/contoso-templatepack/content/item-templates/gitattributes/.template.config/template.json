@@ -3,18 +3,18 @@
   "$comment": "Code for this template is available at https://github.com/sayedihashimi/template-sample",
   "author": "Contoso",
   "classifications": ["template"],
-  "name": "contoso-editorconfig",
-  "description": "Contoso item template for .editorconfig",
-  "identity": "Contoso.Templates.Item.EditorConfig",
+  "name": "contoso-gitattributes",
+  "description": "Contoso item template for .gitattributes",
+  "identity": "Contoso.Templates.Item.GitAttributes",
   "shortName": "cec",
   "tags": {
     "language": "C#",
     "type": "item"
   },
-  "defaultName": ".editorconfig",
+  "defaultName": ".gitattributes",
   "primaryOutputs": [
     {
-      "path": ".editorconfig"
+      "path": ".gitattributes"
     }
   ],
   "postActions": [
