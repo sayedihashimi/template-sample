@@ -18,6 +18,13 @@
               "text": "Main font"
             },
             "isVisible": true
-          }
+        },
+        {
+            "id": "AddAboutPage",
+            "name": {
+              "text": "Add Contoso About Page"
+            },
+            "isVisible": true
+        }
       ]
   }

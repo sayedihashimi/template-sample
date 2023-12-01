@@ -15,13 +15,22 @@
   "defaultName": "NewWebApp",
   "preferNameDirectory": true,
   "symbols": {
+    "copyrightYear": {
+      "$comment":"This will replace 'copyrightYear' in all source files with the current year.",
+      "type": "generated",
+      "generator": "now",
+      "replaces": "copyrightYear",
+      "parameters": {
+        "format": "yyyy"
+      }
+    },
     "AddEnvFile":{
       "type": "parameter",
       "description": "Add the Contoso .env file",
       "datatype":"bool",
       "defaultValue": "true"
-    }
-    ,"Font":{
+    },
+    "Font":{
       "type": "parameter",
       "description": "Font that should be used in the webapp.",
       "datatype":"choice",
@@ -36,16 +45,24 @@
         }
       ],
       "defaultValue": "Geist"
+    },
+    "AddAboutPage":{
+      "type": "parameter",
+      "description": "Add the default About page.",
+      "datatype":"bool",
+      "defaultValue": "true"
     }
-  }
-  ,"sources": [
+  },
+  "sources": [
     {
       "modifiers": [
         {
           "condition": "(!AddEnvFile)",
-          "exclude": [
-            ".env"
-          ]
+          "exclude": [".env"]
+        },
+        {
+          "condition": "(!AddAboutPage)",
+          "exclude": ["Pages/About.cshtml","Pages/About.cshtml.cs"]
         }
       ]
     }

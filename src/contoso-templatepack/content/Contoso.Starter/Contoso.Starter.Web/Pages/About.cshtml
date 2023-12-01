@@ -1,0 +1,33 @@
+﻿@page
+@model NewWebApp9.Pages.AboutModel
+@{
+    ViewData["Title"] = $"{@DotNetEnv.Env.GetString("COMPANY_NAME")} - About";
+}
+
+<div class="text-left">
+    <h1 class="display-4">About Contoso</h1>
+    <p>
+        Management Consultant and Entrepreneur deploying new ventures and businesses with strong Microsoft influence, 
+        creating data-based marketing plans and programs to acquire customers and capture value from target market segments, 
+        and conceptualizing, designing, and deploying effective technology platforms that create sustained and measured 
+        business value.
+    </p>
+    <h2>How it started</h2>
+    <p>
+        In 1991, in Chicago, Illinois, Eric Smith founded a company that would primarily serve the information systems needs 
+        created by the burgeoning network technology industry.
+        In 2002, Mr. Smith rebranded the company Consultants of Network Technology Open Source Offerings (Contoso).  
+        He remained full owner of the company and is still today its chairman of the board of directors. 
+        Headquartered in Chicago since inception, Contoso has evolved through growth and branding from being an IT 
+        services consulting firm into a managed service provider of specialized Intellectual Property(IP).
+    </p>
+    <ul style="text-align:left">
+        <li><a href="http://www.contosollc.com/">Contoso Home Page</a></li>
+        <li>Headquarters: <em>Chicago, Illinois</em></li>
+        <li>Founded: <em>2002</em></li>
+        <li>Specialties: <em>CRM, Data-warehousing, Business Intelligence, and Data Science</em></li>
+    </ul>
+</div>
+@*#if (false)
+  Most of the content here has been copied from http://www.contosollc.com/about_the_firm.htm
+#endif*@

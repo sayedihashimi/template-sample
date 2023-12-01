@@ -30,6 +30,11 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
+                        @*#if(AddAboutPage)
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/About">About</a>
+                        </li>
+                        #endif*@
                     </ul>
                 </div>
             </div>
@@ -43,7 +48,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; @DateTime.Now.Year - @DotNetEnv.Env.GetString("COMPANY_NAME") - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; copyrightYear - @DotNetEnv.Env.GetString("COMPANY_NAME") - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 
