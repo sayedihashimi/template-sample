@@ -10,7 +10,9 @@
 html {
     font-size: 14px;
 }
-
+a{
+  text-decoration: none;
+}
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -24,25 +26,18 @@ html {
 .contosologo{
   max-height: 25px;
 }
-
+.resourceList{
+  list-style-type: none;
+}
 @media (prefers-color-scheme: dark) {
     :root {
         --bs-body-bg: hsl(0, 0%, 11%);
         --bs-body-color: hsl(0, 0%, 100%);
     }
-    body {
-        /*background-color: var(--bs-body-bg);*/
-    }
-}
-/*html {
-  position: relative;
-  min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+.privacy{
+  font-family: 'Roboto', sans-serif;
 }
 
-ul{
 
-}*/

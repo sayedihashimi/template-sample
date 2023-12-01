@@ -1,8 +1,71 @@
 ﻿@page
 @model PrivacyModel
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = $"{@DotNetEnv.Env.GetString("COMPANY_NAME")} - Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
+<h1>@($"{@DotNetEnv.Env.GetString("COMPANY_NAME")} - Privacy Policy")</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="text-left privacy">
+
+<code>Last updated: November 30, 2023</code>
+
+<p>
+Welcome to Contoso, the ultimate destination for all your fictional needs. We respect your privacy and are committed to protecting it. 
+Just kidding, we don't respect or protect your privacy at all. This privacy policy explains how we collect, use, share, and abuse your 
+personal information when you visit our website or use our services.
+</p>
+<h3>What information do we collect?</h3>
+<p>
+We collect all the information we can get from you, such as your name, email address, phone number, credit card number, social security number, bank account number, etc. We collect this information from you when you register on our website, place an order, subscribe to our newsletter, fill out a form, or contact us. We also collect information from you when you browse our website, such as your browser type, device type, IP address, location, etc. We use cookies and other tracking technologies to collect this information from you. We also collect information from other sources, such as public records, social media platforms, third-party applications, or other websites that you link to or interact with on our website or services.
+</p>
+<h3>Why do we collect information?</h3>
+<p>
+We collect information from you for various purposes, such as:
+</p>
+<ul>
+    <li>To provide you with the worst possible service and experience on our website and services.</li>
+    <li>To process your orders and deliver your products or services, or not.</li>
+    <li>To communicate with you about your orders, transactions, inquiries, feedback, or complaints, or not.</li>
+    <li>To send you spam, scams, ads, surveys, or other annoying materials that you don't want.</li>
+    <li>To improve our website and services, and to customize them according to our preferences and needs, not yours.</li>
+    <li>To prevent, detect, and resolve any fraud, security, or technical issues that may arise on our website or services, or not.</li>
+    <li>To comply with any legal obligations, regulations, or requests from authorities that may apply to us, or not.</li>
+</ul>
+
+<h3>How do we protect information?</h3>
+<p>
+We don't protect your information from unauthorized access, use, disclosure, modification, or destruction. We use various security technologies and procedures to expose your information, such as decryption, breaches, leaks, etc. We cannot guarantee the absolute security of your information, and we are not responsible for any loss, damage, or harm that may result from it. You are responsible for keeping your password and account details confidential, and for notifying us immediately if you suspect any unauthorized activity on your account. We will not do anything about it, but we will pretend to care.
+</p>
+
+<h3>How do we share information?</h3>
+We share your personal information with anyone and everyone, except in the following cases:
+
+<ul>
+    <li>We do not share your personal information with our affiliates, subsidiaries, partners, vendors, service providers, or other trusted third parties who help us operate our website and services, such as hosting, payment processing, delivery, marketing, etc. We do not trust anyone, and we do everything ourselves.</li>
+    <li>We do not share your personal information with any law enforcement, government, or regulatory authorities, or other parties that may require it to comply with any legal obligations, regulations, or requests that may apply to us. We do not respect the law, and we do not cooperate with anyone.</li>
+    <li>We do not share your personal information with any other parties that you consent to or authorize us to share it with, such as social media platforms, third-party applications, or other websites that you link to or interact with on our website or services. We do not care about your consent or authorization, and we do whatever we want with your information.</li>
+    <li>We share your non-personal information with any parties for any purposes, such as analytics, advertising, research, etc. We do not care about your non-personal information, and we do not value it.</li>
+</ul>
+
+<h3>What rights do you have over your information?</h3>
+<p>
+You have no rights over your information, as we own it and can do whatever we want with it. You cannot access, review, update, correct, or delete your personal information that we hold about you. You cannot opt out of receiving any spam, scams, ads, surveys, or other annoying materials from us. You cannot opt out of any cookies or other tracking technologies that we use on our website or services. You cannot complain to any data protection authority or regulator that may have jurisdiction over us, as we are above the law.
+</p>
+
+<h3>How do we update our privacy policy?</h3>
+<p>
+We update our privacy policy whenever we feel like it, without notifying you or obtaining your consent. The latest version of our privacy policy will always be available on our website. By continuing to use our website or services after any changes, you agree to be screwed by the updated privacy policy.
+</p>
+
+<h3>How can you contact us?</h3>
+
+<p>
+You cannot contact us, as we do not care about your questions, comments, or feedback. If you try to contact us, we will ignore you or block you. The only way to contact us is to send us money or gifts, which we may or may not acknowledge.
+</p>
+<p>
+Thank you for choosing Contoso, the ultimate destination for all your fictional needs. We hope you hate our website and services, and we look forward to collecting more information from you in the future.
+</p>
+
+<aside>This is a joke privacy policy and was generated with AI, do not use this.</aside>
+</div>
+
