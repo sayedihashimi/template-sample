@@ -1,6 +1,6 @@
 ﻿using System.CommandLine;
 
-namespace Sayedha.Templates.CliTool {
+namespace Contoso.Starter.Console {
     public interface ICommand {
         Command CreateCommand();
     }

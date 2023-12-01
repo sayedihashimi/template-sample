@@ -1,7 +1,7 @@
 ﻿using System.CommandLine;
 using System.CommandLine.Invocation;
 
-namespace Sayedha.Templates.CliTool {
+namespace Contoso.Starter.Console {
     public class MyCommand : CommandBase {
         private IReporter _reporter;
         public MyCommand(IReporter reporter) {

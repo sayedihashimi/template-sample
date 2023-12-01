@@ -3,7 +3,7 @@ using System.CommandLine;
 using System.CommandLine.Builder;
 using System.CommandLine.Parsing;
 
-namespace Sayedha.Templates.CliTool {
+namespace Contoso.Starter.Console {
     public class TemplatesProgram {
         private Parser _parser;
         private ServiceCollection _services;

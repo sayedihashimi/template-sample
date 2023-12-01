@@ -1,18 +1,18 @@
 {
     "$schema": "http://json.schemastore.org/template",
     "author": "Sayed I. Hashimi",
-    "classifications": ["Console","Tool"],
-    "name": "clitool",
-    "defaultName": "MyTool",
-    "identity": "Sayedha.Templates.CliTool",
-    "shortName": "clitool",
+    "classifications": ["Contoso","Console","Tool"],
+    "name": "contoso-console",
+    "shortName": "cconsole",
+    "defaultName": "CliTool",
+    "identity": "Contoso.Templates.Project.Console.01",
     "tags": {
       "language": "C#",
       "type": "project"
     },
-    "sourceName": "Sayedha.Templates.CliTool",
+    "sourceName": "Contoso.Starter.Console",
     "preferNameDirectory": true,
-    "description": "Template for a dotnet CLI tool",
+    "description": "Contoso template for a console application.",
     "ide":{
       "categories":["msbuild","desktop"]
     },

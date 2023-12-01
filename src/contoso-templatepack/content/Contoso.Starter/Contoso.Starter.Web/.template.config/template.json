@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/template",
   "author": "Contoso",
-  "classifications": ["Web","Contoso"],
+  "classifications": ["Contoso","Web"],
   "name": "contoso-webapp",
   "description": "Project template to get started with a Contoso web app.",
   "identity": "Contoso.Templates.Project.Webapp.01",

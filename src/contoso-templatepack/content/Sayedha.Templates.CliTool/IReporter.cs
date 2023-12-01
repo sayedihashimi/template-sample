@@ -1,4 +1,4 @@
-﻿namespace Sayedha.Templates.CliTool {
+﻿namespace Contoso.Starter.Console {
     public interface IReporter {
         bool EnableVerbose { get; set; }
         void Write(string output);
