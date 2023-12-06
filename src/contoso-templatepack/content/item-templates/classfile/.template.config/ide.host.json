@@ -1,0 +1,5 @@
+{
+    "$schema": "https://json.schemastore.org/vs-2017.3.host",
+    "defaultItemExtension": "json",
+    "itemHierarchyPaths": [ "Contoso" ]
+}
