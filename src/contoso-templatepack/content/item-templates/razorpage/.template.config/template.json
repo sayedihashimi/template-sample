@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "$comment": "Code for this template is available at https://github.com/sayedihashimi/template-sample",
+  "author": "Contoso",
+  "classifications": ["template"],
+  "name": "contoso-razorpage",
+  "description": "Contoso item template for a Razor Page with a Contoso approved license.",
+  "identity": "Contoso.Templates.Item.RazorPageWithLicense",
+  "shortName": "crazorpage",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "sourceName": "CustomRazorPage",
+  "defaultName": "MyRazorPage",
+  "symbols": {
+    "DefaultNamespace": {
+      "type": "bind",
+      "binding": "msbuild:RootNamespace",
+      "replaces": "Contoso.Starter",
+      "defaultValue": "Contoso"
+    }
+  },
+  "primaryOutputs": [
+    {
+      "path": "CustomRazorPage.cshtml.cs"
+    },
+    {
+      "path": "CustomRazorPage.cshtml"
+    }
+  ],
+  "postActions": [
+    {
+      "id": "openInEditor",
+      "condition": "(HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\")",
+      "description": "Opens generated files in the editor",
+      "manualInstructions": [],
+      "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
+      "args": {
+        "files": "0"
+      },
+      "continueOnError": true
+    },
+    {
+      "id": "openInEditor",
+      "condition": "(HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\")",
+      "description": "Opens generated files in the editor",
+      "manualInstructions": [],
+      "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
+      "args": {
+        "files": "1"
+      },
+      "continueOnError": true
+    }
+  ]
+}

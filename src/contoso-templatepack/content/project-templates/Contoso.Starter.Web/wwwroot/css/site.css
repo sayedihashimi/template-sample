@@ -1,0 +1,55 @@
+/* contoso specific items below here */
+:root {
+    /*#if (Font == 'geist')*/
+    --bs-font-sans-serif: 'Geist', sans-serif;
+    /*#endif*/
+    /*#if (Font == 'raleway')*/
+    --bs-font-sans-serif: 'Raleway', sans-serif;
+    /*#endif*/
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+      --bs-body-bg: hsl(0, 0%, 11%);
+      --bs-body-color: hsl(0, 0%, 100%);
+  }
+}
+
+html {
+    font-size: 14px;
+}
+
+a{
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.contosologo{
+  max-height: 25px;
+}
+
+.resourceList{
+  list-style-type: none;
+}
+
+.privacy{
+  font-family: 'Roboto', sans-serif;
+}
+
+.sad-pandabg {
+  background: url(/sad-looking-panda.png);
+}
+
+.error-message {
+  background-color: var(--bs-light) !important;
+  width: fit-content;
+  opacity: 0.7;
+}

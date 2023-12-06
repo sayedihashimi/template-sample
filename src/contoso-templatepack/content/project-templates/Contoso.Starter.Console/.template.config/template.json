@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Sayed I. Hashimi",
+    "classifications": ["Contoso","Console","Tool"],
+    "name": "contoso-console",
+    "shortName": "cconsole",
+    "defaultName": "CliTool",
+    "identity": "Contoso.Templates.Project.Console.01",
+    "tags": {
+      "language": "C#",
+      "type": "project"
+    },
+    "sourceName": "Contoso.Starter.Console",
+    "preferNameDirectory": true,
+    "description": "Contoso template for a console application.",
+    "ide":{
+      "categories":["msbuild","desktop"]
+    },
+  "symbols": {
+    "SubcommandName": {
+      "type": "parameter",
+      "defaultValue": "Subcommand",
+      "replaces": "MyCommand",
+      "datatype": "text",
+      "description": "Name of the subcommand"
+    },
+    "SubcommandDesc": {
+        "type": "parameter",
+        "defaultValue": "TODO: update command description",
+        "replaces": "Command Description",
+        "datatype": "text",
+        "description": "Help text for command description"
+      },
+    "ParamName": {
+      "type": "parameter",
+      "defaultValue": "paramname",
+      "replaces": "paramname",
+      "datatype": "text",
+      "description": "Name of parameter for the subcommand"
+    },
+    "ParamDesc": {
+      "type": "parameter",
+      "defaultValue": "TODO: update param description",
+      "replaces": "Parameter description here",
+      "datatype": "text",
+      "description": "Help text for the parameter description"
+    }
+  }
+  }

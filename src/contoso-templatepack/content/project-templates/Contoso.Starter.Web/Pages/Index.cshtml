@@ -1,0 +1,15 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = $"{@DotNetEnv.Env.GetString("COMPANY_NAME")} - Home";
+}
+
+<div class="text-left">
+    <h1 class="display-4">Use the resources below to get started with your new Contoso web app.</h1>
+    <ul class="resourceList">
+        <li><a href="#">Getting started with a new web app in Contoso</a></li>
+        <li><a href="#">New web app checklist</a></li>
+        <li><a href="#">Pre-deploy checklist</a></li>
+        <li><a href="#">Localization at Contoso</a></li>
+    </ul>
+</div>

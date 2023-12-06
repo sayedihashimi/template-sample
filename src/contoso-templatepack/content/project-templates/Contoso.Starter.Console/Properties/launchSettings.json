@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Sayedha.Templates.CliTool": {
+      "commandName": "Project",
+      "commandLineArgs": "MyCommand --paramname 1234526 --verbose"
+    }
+  }
+}

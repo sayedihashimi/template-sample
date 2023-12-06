@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "$comment": "Code for this template is available at https://github.com/sayedihashimi/template-sample",
+  "author": "Contoso",
+  "classifications": ["template"],
+  "name": "contoso-appsettings",
+  "description": "Contoso item template for appSettings.json and appSettings.development.json",
+  "identity": "Contoso.Templates.Item.AppSettings",
+  "shortName": "cas",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "defaultName": "appsettings",
+  "primaryOutputs": [
+    {
+      "path": "appsettings.json"
+    },
+    {
+      "path": "appsettings.Development.json"
+    }
+  ],
+  "postActions": [
+    {
+      "id": "openInEditor",
+      "condition": "(HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\")",
+      "description": "Opens generated files in the editor",
+      "manualInstructions": [],
+      "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
+      "args": {
+        "files": "1"
+      },
+      "continueOnError": true
+    },
+    {
+      "id": "openInEditor2",
+      "condition": "(HostIdentifier != \"dotnetcli\" && HostIdentifier != \"dotnetcli-preview\")",
+      "description": "Opens generated files in the editor",
+      "manualInstructions": [],
+      "actionId": "84C0DA21-51C8-4541-9940-6CA19AF04EE6",
+      "args": {
+        "files": "0"
+      },
+      "continueOnError": true
+    }
+  ]
+}

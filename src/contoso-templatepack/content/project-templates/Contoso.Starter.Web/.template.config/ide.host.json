@@ -1,0 +1,31 @@
+{
+    "$schema": "https://json.schemastore.org/ide.host",
+    "name":{
+        "$comment":"This shows how you can override the name of the template in Visual Studio",
+        "text": "Contoso Web App"
+    },
+    "DisplayOverviewPage": "",
+    "symbolInfo": [
+        {
+          "id": "AddEnvFile",
+          "name": {
+            "text": "Add Contoso .env file"
+          },
+          "isVisible": true
+        },
+        {
+            "id": "Font",
+            "name": {
+              "text": "Main font"
+            },
+            "isVisible": true
+        },
+        {
+            "id": "AddAboutPage",
+            "name": {
+              "text": "Add Contoso About Page"
+            },
+            "isVisible": true
+        }
+      ]
+  }

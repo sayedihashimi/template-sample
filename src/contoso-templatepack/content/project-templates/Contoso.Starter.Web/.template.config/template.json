@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Contoso",
+  "classifications": ["Contoso","Web"],
+  "name": "contoso-webapp",
+  "description": "Project template to get started with a Contoso web app.",
+  "identity": "Contoso.Templates.Project.Webapp.01",
+  "shortName": "cweb",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "$comment_sourceName": "TODO: Source name should follow these rules: https://aka.ms/template-json-source-name. Source name may be removed if replacement for name is not required.",
+  "sourceName": "Contoso.Starter.Web",
+  "defaultName": "NewWebApp",
+  "preferNameDirectory": true,
+  "symbols": {
+    "copyrightYear": {
+      "$comment":"This will replace 'copyrightYear' in all source files with the current year.",
+      "type": "generated",
+      "generator": "now",
+      "replaces": "copyrightYear",
+      "parameters": {
+        "format": "yyyy"
+      }
+    },
+    "UpdateContosoAppId": {
+      "type": "generated",
+      "generator": "guid",
+      "replaces": "C6F6262B-874E-4943-8549-C4263E60848B",
+      "parameters": {
+        "defaultFormat": "D"
+      }
+    },
+
+
+    "AddEnvFile":{
+      "type": "parameter",
+      "description": "Add the Contoso .env file",
+      "datatype":"bool",
+      "defaultValue": "true"
+    },
+    "Font":{
+      "type": "parameter",
+      "description": "Font that should be used in the webapp.",
+      "datatype":"choice",
+      "choices": [
+        {
+          "choice": "Geist",
+          "description": "geist"
+        },
+        {
+          "choice": "Raleway",
+          "description": "raleway"
+        }
+      ],
+      "defaultValue": "Geist"
+    },
+    "AddAboutPage":{
+      "type": "parameter",
+      "description": "Add the default About page.",
+      "datatype":"bool",
+      "defaultValue": "true"
+    },
+
+
+    "kestrelHttpPort": {
+      "type": "parameter",
+      "datatype": "integer",
+      "description": "Port number to use for the HTTP endpoint in launchSettings.json."
+    },
+    "kestrelHttpPortGenerated": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": {
+        "low": 5000,
+        "high": 5300
+      }
+    },
+    "kestrelHttpPortReplacer": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "kestrelHttpPort",
+        "fallbackVariableName": "kestrelHttpPortGenerated"
+      },
+      "replaces": "5500"
+    },
+    "kestrelHttpsPort": {
+      "type": "parameter",
+      "datatype": "integer",
+      "description": "Port number to use for the HTTPS endpoint in launchSettings.json. This option is only applicable when the parameter no-https is not used (no-https will be ignored if Individual auth is used)."
+    },
+    "kestrelHttpsPortGenerated": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": {
+        "low": 7000,
+        "high": 7300
+      }
+    },
+    "kestrelHttpsPortReplacer": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "kestrelHttpsPort",
+        "fallbackVariableName": "kestrelHttpsPortGenerated"
+      },
+      "replaces": "5501"
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(!AddEnvFile)",
+          "exclude": [".env"]
+        },
+        {
+          "condition": "(!AddAboutPage)",
+          "exclude": ["Pages/About.cshtml","Pages/About.cshtml.cs"]
+        }
+      ]
+    }
+  ]
+}
