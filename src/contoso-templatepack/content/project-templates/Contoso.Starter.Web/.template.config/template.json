@@ -24,6 +24,16 @@
         "format": "yyyy"
       }
     },
+    "UpdateContosoAppId": {
+      "type": "generated",
+      "generator": "guid",
+      "replaces": "C6F6262B-874E-4943-8549-C4263E60848B",
+      "parameters": {
+        "defaultFormat": "D"
+      }
+    },
+
+
     "AddEnvFile":{
       "type": "parameter",
       "description": "Add the Contoso .env file",
