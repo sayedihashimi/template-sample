@@ -1,2 +1,19 @@
-<!-- Provide an overview of what your template package does and how to get started.
-Consider previewing the README before uploading (https://learn.microsoft.com/en-us/nuget/nuget-org/package-readme-on-nuget-org#preview-your-readme). -->
+# Contoso template pack
+
+Sample template pack for a fictitious organization, Contoso.
+
+Templates:
+
+- Web project
+- Console project
+- Several item (file) templates
+
+Template features
+
+- Parameters
+- Dynamic port generation
+- Generate guid for app id
+- Copyright year symbol
+- Conditionally add files (AddEnvFile/AddAboutPage)
+- Conditionally add content to files (Font)
+
