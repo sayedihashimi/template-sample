@@ -435,6 +435,7 @@ create a solution template.
  1. In the `template.json` file change the `type` tag to be `solution` instead of `project`.
  1. Update the file name of the solution to be different from `sourceName` or `defaultName`, See below for more info.
  1. Update `template.json` to create unique GUIDs to replace the Project ID in the `.sln` file.
+ 1. In `template.json` make sure to set add a `tag`, `editorTreatAs` set to `solution`.
 
 ### Solution name best practices
 
@@ -448,6 +449,16 @@ If the solution's file name is allowed to match the `sourceName`/`defaultName`, 
 
 To rename the solution file, make the following changes to `template.json`:
 
+1. In `template.json` add the `editorTreatAs` tag and set it to 'solution'.
+
+```json
+"tags": {
+  "language": "C#",
+  "type": "solution",
+  "editorTreatAs":"solution"
+},
+```
+
 1. In the `symbols` section, add the following binding so that the `HostIdentifier`
 symbol is defined in your template:
 
@@ -458,7 +469,7 @@ symbol is defined in your template:
     }
     ```
 
-2. In the `sources` section, add the following modifier to rename the file when projects are created
+1. In the `sources` section, add the following modifier to rename the file when projects are created
 using `dotnet new` (in Visual Studio, the name specified in the New Project Dialog will be used):
 
     ```json
